@@ -2,13 +2,15 @@ NAME = scop
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror  
 CPPFLAGS = -Iinclude `pkg-config --cflags glfw3`
-LDLIBS = -lft `pkg-config --static --libs glfw3`
+LDLIBS = -lft `pkg-config --static --libs glfw3` -framework OpenGL -framework AppKit
 LDFLAGS = -Llibft
 INC_PATH = include/
 OBJ_PATH = obj
 SRC_PATH = src
 SRC_NAME = main.c \
 	   glad.c \
+	   init.c \
+	   err.c \
 
 OBJ_NAME = $(SRC_NAME:c=o)
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
