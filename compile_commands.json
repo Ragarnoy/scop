@@ -1,0 +1,34 @@
+[
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
+   "-o",
+   "obj/main.o",
+   "-c",
+   "src/main.c"
+  ],
+  "file": "src/main.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
+   "-o",
+   "obj/glad.o",
+   "-c",
+   "src/glad.c"
+  ],
+  "file": "src/glad.c"
+ }
+]
