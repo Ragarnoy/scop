@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/10 17:02:22 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/11 17:04:23 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ int	shutdown(int err);
 void	printAndTerminate(char *str);
 void	framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void	processInput(GLFWwindow *win);
+int	loadVert(char *pth);
+int	loadFrag(char *pth);
 
 #endif

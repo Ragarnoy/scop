@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 16:32:59 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/10 17:44:04 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/11 17:07:17 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ int	setup_gl(t_env *env)
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		return (shutdown(2));
 	return 1;
+}
+
+int	setup_shader()
+{
+	int vertShader;
+	int fragShader;
+
+	
 }
 
 t_env	*get_env(void)
