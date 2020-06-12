@@ -6,6 +6,7 @@
    "-Wall",
    "-Wextra",
    "-Werror",
+   "-g",
    "-Iinclude",
    "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
    "-o",
@@ -22,6 +23,7 @@
    "-Wall",
    "-Wextra",
    "-Werror",
+   "-g",
    "-Iinclude",
    "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
    "-o",
@@ -30,5 +32,958 @@
    "src/glad.c"
   ],
   "file": "src/glad.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
+   "-o",
+   "obj/init.o",
+   "-c",
+   "src/init.c"
+  ],
+  "file": "src/init.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
+   "-o",
+   "obj/err.o",
+   "-c",
+   "src/err.c"
+  ],
+  "file": "src/err.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
+   "-o",
+   "obj/glLoader.o",
+   "-c",
+   "src/glLoader.c"
+  ],
+  "file": "src/glLoader.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_bzero.o",
+   "ft_bzero.c"
+  ],
+  "file": "ft_bzero.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_isalnum.o",
+   "ft_isalnum.c"
+  ],
+  "file": "ft_isalnum.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_isalpha.o",
+   "ft_isalpha.c"
+  ],
+  "file": "ft_isalpha.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_isascii.o",
+   "ft_isascii.c"
+  ],
+  "file": "ft_isascii.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_isblank.o",
+   "ft_isblank.c"
+  ],
+  "file": "ft_isblank.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_isdigit.o",
+   "ft_isdigit.c"
+  ],
+  "file": "ft_isdigit.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_isprint.o",
+   "ft_isprint.c"
+  ],
+  "file": "ft_isprint.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_memalloc.o",
+   "ft_memalloc.c"
+  ],
+  "file": "ft_memalloc.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_memccpy.o",
+   "ft_memccpy.c"
+  ],
+  "file": "ft_memccpy.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_memchr.o",
+   "ft_memchr.c"
+  ],
+  "file": "ft_memchr.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_memcmp.o",
+   "ft_memcmp.c"
+  ],
+  "file": "ft_memcmp.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_memcpy.o",
+   "ft_memcpy.c"
+  ],
+  "file": "ft_memcpy.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_memdel.o",
+   "ft_memdel.c"
+  ],
+  "file": "ft_memdel.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_memmove.o",
+   "ft_memmove.c"
+  ],
+  "file": "ft_memmove.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_memset.o",
+   "ft_memset.c"
+  ],
+  "file": "ft_memset.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strcat.o",
+   "ft_strcat.c"
+  ],
+  "file": "ft_strcat.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strchr.o",
+   "ft_strchr.c"
+  ],
+  "file": "ft_strchr.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strdup.o",
+   "ft_strdup.c"
+  ],
+  "file": "ft_strdup.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_striter.o",
+   "ft_striter.c"
+  ],
+  "file": "ft_striter.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_striteri.o",
+   "ft_striteri.c"
+  ],
+  "file": "ft_striteri.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strlcat.o",
+   "ft_strlcat.c"
+  ],
+  "file": "ft_strlcat.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strlen.o",
+   "ft_strlen.c"
+  ],
+  "file": "ft_strlen.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strmap.o",
+   "ft_strmap.c"
+  ],
+  "file": "ft_strmap.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strncat.o",
+   "ft_strncat.c"
+  ],
+  "file": "ft_strncat.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strrchr.o",
+   "ft_strrchr.c"
+  ],
+  "file": "ft_strrchr.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_tolower.o",
+   "ft_tolower.c"
+  ],
+  "file": "ft_tolower.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_toupper.o",
+   "ft_toupper.c"
+  ],
+  "file": "ft_toupper.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strstr.o",
+   "ft_strstr.c"
+  ],
+  "file": "ft_strstr.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strcmp.o",
+   "ft_strcmp.c"
+  ],
+  "file": "ft_strcmp.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strcpy.o",
+   "ft_strcpy.c"
+  ],
+  "file": "ft_strcpy.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_atoi.o",
+   "ft_atoi.c"
+  ],
+  "file": "ft_atoi.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strncmp.o",
+   "ft_strncmp.c"
+  ],
+  "file": "ft_strncmp.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strncpy.o",
+   "ft_strncpy.c"
+  ],
+  "file": "ft_strncpy.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strnstr.o",
+   "ft_strnstr.c"
+  ],
+  "file": "ft_strnstr.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_putchar.o",
+   "ft_putchar.c"
+  ],
+  "file": "ft_putchar.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_putchar_fd.o",
+   "ft_putchar_fd.c"
+  ],
+  "file": "ft_putchar_fd.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_putendl.o",
+   "ft_putendl.c"
+  ],
+  "file": "ft_putendl.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_putendl_fd.o",
+   "ft_putendl_fd.c"
+  ],
+  "file": "ft_putendl_fd.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_putnbr.o",
+   "ft_putnbr.c"
+  ],
+  "file": "ft_putnbr.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_putnbr_fd.o",
+   "ft_putnbr_fd.c"
+  ],
+  "file": "ft_putnbr_fd.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_putstr.o",
+   "ft_putstr.c"
+  ],
+  "file": "ft_putstr.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_putstr_fd.o",
+   "ft_putstr_fd.c"
+  ],
+  "file": "ft_putstr_fd.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strequ.o",
+   "ft_strequ.c"
+  ],
+  "file": "ft_strequ.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strjoin.o",
+   "ft_strjoin.c"
+  ],
+  "file": "ft_strjoin.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strnequ.o",
+   "ft_strnequ.c"
+  ],
+  "file": "ft_strnequ.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strsplit.o",
+   "ft_strsplit.c"
+  ],
+  "file": "ft_strsplit.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strsub.o",
+   "ft_strsub.c"
+  ],
+  "file": "ft_strsub.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strtrim.o",
+   "ft_strtrim.c"
+  ],
+  "file": "ft_strtrim.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strdel.o",
+   "ft_strdel.c"
+  ],
+  "file": "ft_strdel.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strnew.o",
+   "ft_strnew.c"
+  ],
+  "file": "ft_strnew.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strclr.o",
+   "ft_strclr.c"
+  ],
+  "file": "ft_strclr.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strmapi.o",
+   "ft_strmapi.c"
+  ],
+  "file": "ft_strmapi.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_itoa.o",
+   "ft_itoa.c"
+  ],
+  "file": "ft_itoa.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_getndigits.o",
+   "ft_getndigits.c"
+  ],
+  "file": "ft_getndigits.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_lstadd.o",
+   "ft_lstadd.c"
+  ],
+  "file": "ft_lstadd.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_lstnew.o",
+   "ft_lstnew.c"
+  ],
+  "file": "ft_lstnew.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_lstdelone.o",
+   "ft_lstdelone.c"
+  ],
+  "file": "ft_lstdelone.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_lstdel.o",
+   "ft_lstdel.c"
+  ],
+  "file": "ft_lstdel.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_lstiter.o",
+   "ft_lstiter.c"
+  ],
+  "file": "ft_lstiter.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_lstmap.o",
+   "ft_lstmap.c"
+  ],
+  "file": "ft_lstmap.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_putlst.o",
+   "ft_putlst.c"
+  ],
+  "file": "ft_putlst.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_str_is_alpha.o",
+   "ft_str_is_alpha.c"
+  ],
+  "file": "ft_str_is_alpha.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_str_is_lowercase.o",
+   "ft_str_is_lowercase.c"
+  ],
+  "file": "ft_str_is_lowercase.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_str_is_numeric.o",
+   "ft_str_is_numeric.c"
+  ],
+  "file": "ft_str_is_numeric.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_str_is_printable.o",
+   "ft_str_is_printable.c"
+  ],
+  "file": "ft_str_is_printable.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_str_is_uppercase.o",
+   "ft_str_is_uppercase.c"
+  ],
+  "file": "ft_str_is_uppercase.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strcapitalize.o",
+   "ft_strcapitalize.c"
+  ],
+  "file": "ft_strcapitalize.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strlowcase.o",
+   "ft_strlowcase.c"
+  ],
+  "file": "ft_strlowcase.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strupcase.o",
+   "ft_strupcase.c"
+  ],
+  "file": "ft_strupcase.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_lstsplit.o",
+   "ft_lstsplit.c"
+  ],
+  "file": "ft_lstsplit.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strappend.o",
+   "ft_strappend.c"
+  ],
+  "file": "ft_strappend.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strclen.o",
+   "ft_strclen.c"
+  ],
+  "file": "ft_strclen.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strlenc.o",
+   "ft_strlenc.c"
+  ],
+  "file": "ft_strlenc.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strclenc.o",
+   "ft_strclenc.c"
+  ],
+  "file": "ft_strclenc.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strrep.o",
+   "ft_strrep.c"
+  ],
+  "file": "ft_strrep.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "get_next_line.o",
+   "get_next_line.c"
+  ],
+  "file": "get_next_line.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_countwords.o",
+   "ft_countwords.c"
+  ],
+  "file": "ft_countwords.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_retwords.o",
+   "ft_retwords.c"
+  ],
+  "file": "ft_retwords.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_itoabase.o",
+   "ft_itoabase.c"
+  ],
+  "file": "ft_itoabase.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_hsl_to_rgb.o",
+   "ft_hsl_to_rgb.c"
+  ],
+  "file": "ft_hsl_to_rgb.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_hsv_to_rgb.o",
+   "ft_hsv_to_rgb.c"
+  ],
+  "file": "ft_hsv_to_rgb.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_strcmp_nocase.o",
+   "ft_strcmp_nocase.c"
+  ],
+  "file": "ft_strcmp_nocase.c"
  }
 ]

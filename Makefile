@@ -1,6 +1,6 @@
 NAME = scop
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror  
+CFLAGS = -Wall -Wextra -Werror -g
 CPPFLAGS = -Iinclude `pkg-config --cflags glfw3`
 LDLIBS = -lft `pkg-config --static --libs glfw3` -framework OpenGL -framework AppKit
 LDFLAGS = -Llibft
@@ -11,10 +11,12 @@ SRC_NAME = main.c \
 	   glad.c \
 	   init.c \
 	   err.c \
+	   glLoader.c \
 
 OBJ_NAME = $(SRC_NAME:c=o)
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
+
 
 all: $(NAME)
 	@printf "Scop ready. \033[32m✔\033[0m  		                  \n"
@@ -42,6 +44,9 @@ fclean: clean
 	@printf "All files have been cleaned. \033[32m✔\033[0m                   \n"
 
 re: fclean all
+
+run: all
+	./scop "asd"
 
 norme:
 	@norminette $(SRC)

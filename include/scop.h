@@ -6,7 +6,11 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/06/11 17:04:23 by tlernoul         ###   ########.fr       */
+=======
+/*   Updated: 2020/06/12 13:06:07 by tlernoul         ###   ########.fr       */
+>>>>>>> Display shapes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +27,30 @@
 
 typedef struct 		s_env
 {
-	GLFWwindow	*window;
+	GLFWwindow      *window;
+	unsigned int    vbo;
+    unsigned int    vao;
+	unsigned int    ebo;
+	int             shProgram;
 
-}			t_env;
+}			        t_env;
 
-int	setup_gl(t_env *env);
-t_env	*get_env(void);
-int	shutdown(int err);
+int	    shutdown(int err);
+int	    setup_gl(t_env *env);
+int     setup_shader(t_env *env);
+int     setup_vertex(t_env *env);
+int	    loadVert(char *pth);
+int	    loadFrag(char *pth);
 void	printAndTerminate(char *str);
 void	framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void	processInput(GLFWwindow *win);
+<<<<<<< HEAD
 int	loadVert(char *pth);
 int	loadFrag(char *pth);
+=======
+void	glShaderLogError(int shader, int shaderType);
+void	glProgramLogError(int program);
+t_env	*get_env(void);
+>>>>>>> Display shapes
 
 #endif

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CLionExternalBuildManager">
+    <target id="8a92ee45-dbdf-4b57-ac89-3e386ce02a26" name="scop" projectName="scop">
+      <configuration id="47e82420-1790-4ae6-b836-3611c7e3ef78" name="scop" toolchainName="Default">
+        <build type="TOOL">
+          <tool actionId="Tool_External Tools_buildwmake" />
+        </build>
+        <clean type="TOOL">
+          <tool actionId="Tool_External Tools_cleanwmake" />
+        </clean>
+      </configuration>
+    </target>
+  </component>
+</project>
