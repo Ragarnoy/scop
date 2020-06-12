@@ -44,13 +44,10 @@ int	    loadFrag(char *pth);
 void	printAndTerminate(char *str);
 void	framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void	processInput(GLFWwindow *win);
-<<<<<<< HEAD
-int	loadVert(char *pth);
-int	loadFrag(char *pth);
-=======
+int	    loadVert(char *pth);
+int	    loadFrag(char *pth);
 void	glShaderLogError(int shader, int shaderType);
 void	glProgramLogError(int program);
 t_env	*get_env(void);
->>>>>>> Display shapes
 
 #endif
