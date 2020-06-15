@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 13:50:39 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/12 17:03:32 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/15 15:25:05 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,29 @@ void	processInput(GLFWwindow *win)
 
 int	display_loop(t_env *env)
 {
-	int retcode;
+	int     retCode;
+	float   timeValue;
+	float   colorShift;
+	float   _greenValue;
+	float   _redValue;
+	float   _blueValue;
+	int     vertexColorLocation = glGetUniformLocation(env->shProgram, "vertexColor");
 
-	retcode = 1;
+	retCode = 1;
+	glUseProgram(env->shProgram);
 	while (!glfwWindowShouldClose(env->window))
 	{
+		timeValue = glfwGetTime();
+		colorShift = (sin(timeValue) / 2.0f);
 		processInput(env->window);
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-		glUseProgram(env->shProgram);
+		_greenValue = colorShift + 0.7f;
+		_redValue = colorShift + 0.7f;
+		_blueValue = colorShift + 0.7f;
+		glUniform4f(vertexColorLocation, _redValue, _greenValue, _blueValue, 1.0f);
 		glBindVertexArray(env->vao);
-		//glDrawArrays(GL_TRIANGLES, 0, 3);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
         glfwSwapBuffers(env->window);
         glfwPollEvents();
 	}
@@ -45,7 +56,7 @@ int	display_loop(t_env *env)
 	glDeleteVertexArrays(1, &env->vao);
 	glDeleteBuffers(1, &env->vbo);
 	glDeleteProgram(env->shProgram);
-	return (retcode);
+	return (retCode);
 }
 
 int	main(int argc, char *argv[])

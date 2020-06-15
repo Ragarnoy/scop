@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/11 17:04:23 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/15 11:37:41 by tlernoul         ###   ########.fr       */
 /*   Updated: 2020/06/12 13:06:07 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -21,6 +21,7 @@
 # include <glad/glad.h>
 # include "GLFW/glfw3.h"
 # include "../libft/libft.h"
+# include <math.h>
 
 typedef struct 		s_env
 {

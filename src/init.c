@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 16:32:59 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/12 17:03:45 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/15 14:25:50 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,24 @@ int	setup_vertex(t_env *env)
 //            0.5f, -0.5f, 0.0f, // right
 //            0.0f,  0.5f, 0.0f  // top
 //    };
+
 	float vertices[] = {
-			0.5f,  0.5f, 0.0f,  // top right
-			0.5f, -0.5f, 0.0f,  // bottom right
-			-0.5f, -0.5f, 0.0f,  // bottom left
-			-0.5f,  0.5f, 0.0f   // top left
-	};
-	unsigned int indices[] = {  // note that we start from 0!
-			0, 1, 3,  // first Triangle
-			1, 2, 3   // second Triangle
+			0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  // bottom right
+			-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,  // bottom left
+			0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f   // top
+
 	};
 
     glGenVertexArrays(1, &env->vao);
     glGenBuffers(1, &env->vbo);
-	glGenBuffers(1, &env->ebo);
 	glBindVertexArray(env->vao);
     glBindBuffer(GL_ARRAY_BUFFER, env->vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, env->ebo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
+//	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 	return 1;
