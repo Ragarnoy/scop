@@ -12,6 +12,7 @@ SRC_NAME = main.c \
 	   init.c \
 	   err.c \
 	   glLoader.c \
+	   utils.c
 
 OBJ_NAME = $(SRC_NAME:c=o)
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))

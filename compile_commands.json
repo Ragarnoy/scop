@@ -85,6 +85,23 @@
   "file": "src/glLoader.c"
  },
  {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
+   "-o",
+   "obj/utils.o",
+   "-c",
+   "src/utils.c"
+  ],
+  "file": "src/utils.c"
+ },
+ {
   "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
   "arguments": [
    "gcc",
@@ -985,5 +1002,16 @@
    "ft_strcmp_nocase.c"
   ],
   "file": "ft_strcmp_nocase.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_parse_bmp.o",
+   "ft_parse_bmp.c"
+  ],
+  "file": "ft_parse_bmp.c"
  }
 ]

@@ -26,7 +26,7 @@ SRC = ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isblank.c ft_isdigit.
 		ft_str_is_printable.c ft_str_is_uppercase.c ft_strcapitalize.c ft_strlowcase.c \
 		ft_strupcase.c ft_lstsplit.c ft_strappend.c ft_strclen.c ft_strlenc.c ft_strclenc.c \
 		ft_strrep.c get_next_line.c ft_countwords.c ft_retwords.c ft_itoabase.c \
-		ft_hsl_to_rgb.c ft_hsv_to_rgb.c ft_strcmp_nocase.c
+		ft_hsl_to_rgb.c ft_hsv_to_rgb.c ft_strcmp_nocase.c ft_parse_bmp.c
 
 HEADER = libft.h
 OBJ = $(SRC:.c=.o)

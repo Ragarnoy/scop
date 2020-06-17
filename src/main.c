@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 13:50:39 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/15 15:25:05 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/17 16:38:40 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	display_loop(t_env *env)
 	float   _greenValue;
 	float   _redValue;
 	float   _blueValue;
-	int     vertexColorLocation = glGetUniformLocation(env->shProgram, "vertexColor");
 
 	retCode = 1;
 	glUseProgram(env->shProgram);
@@ -46,9 +45,11 @@ int	display_loop(t_env *env)
 		_greenValue = colorShift + 0.7f;
 		_redValue = colorShift + 0.7f;
 		_blueValue = colorShift + 0.7f;
-		glUniform4f(vertexColorLocation, _redValue, _greenValue, _blueValue, 1.0f);
+//		set_uniform_4f("vertexColor", _redValue, _greenValue, _blueValue, 1.0f);
+		glBindTexture(GL_TEXTURE_2D, env->texture);
 		glBindVertexArray(env->vao);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+//		glDrawArrays(GL_TRIANGLES, 0, 3);
         glfwSwapBuffers(env->window);
         glfwPollEvents();
 	}
@@ -67,9 +68,13 @@ int	main(int argc, char *argv[])
 		shutdown(0);
 	env = get_env();
 	if (!setup_gl(env))
-		return -1;
-    setup_shader(env);
-    setup_vertex(env);
+		return (-1);
+    if (!setup_shader(env))
+    	return (-1);
+    if (!setup_vertex(env))
+    	return (-1);
+    if (!setup_texture(env))
+		return (-1);
 	display_loop(env);
 	glfwTerminate();
 	return 0;
