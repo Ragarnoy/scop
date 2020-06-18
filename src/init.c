@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 16:32:59 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/17 16:39:53 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/18 12:39:44 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int setup_texture(t_env *env)
 
 	glGenTextures(1, &env->texture);
 	glBindTexture(GL_TEXTURE_2D, env->texture);
-	if (!(bmp = ft_parse_bmp("/Users/tlernoul/Downloads/wood.bmp")))
+	if (!(bmp = ft_parse_bmp("/Users/tlernoul/Downloads/wall.bmp")))
 	{
 		return (0);
 	}

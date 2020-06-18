@@ -6,7 +6,7 @@
 /*   By: tlernoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 15:40:27 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/17 16:43:51 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/18 13:38:41 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,22 @@ typedef struct		s_list
 
 struct				s_bmp_fileheader
 {
-	unsigned short	type;
-	unsigned int	filesize;
-	unsigned short	r1;
-	unsigned short	r2;
-	unsigned int	offset;
-	unsigned int	size;
-	int				width;
-	int				height;
-	unsigned short	planes;
-	unsigned short	bitcount;
-	unsigned int	compression;
-	unsigned int	imgsize;
-	unsigned int	x_res;
-	unsigned int	y_res;
-	unsigned int	num_colors;
-	unsigned int	important_colors;
+	uint16_t		type;
+	uint32_t		filesize;
+	uint16_t		r1;
+	uint16_t		r2;
+	uint32_t		offset;
+	uint32_t		size;
+	int32_t			width;
+	int32_t			height;
+	uint16_t		planes;
+	uint16_t		bitppx;
+	uint32_t		compression;
+	uint32_t		imgsize;
+	uint32_t		x_res;
+	uint32_t		y_res;
+	uint32_t		num_colors;
+	uint32_t		important_colors;
 };
 
 struct				s_bmp_image
@@ -94,6 +94,8 @@ t_bmp				*ft_parse_bmp(char *pth);
 int					ft_hsl_to_rgb(t_hsl hsl);
 
 int					ft_hsv_to_rgb(t_hsv hsv);
+
+double 				ft_atof(const char *str);
 
 int					ft_atoi(const char *str);
 

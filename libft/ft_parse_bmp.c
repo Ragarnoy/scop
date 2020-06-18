@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 17:47:02 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/17 16:48:46 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/18 12:34:25 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ unsigned char	*read_pixel(int size, int fd)
 		ret[i * 4 + 1] = img.g;
 		ret[i * 4 + 2] = img.b;
 		ret[i * 4 + 3] = img.a;
+		if (i <= 60)
+			printf("%d %d %d %d\n", img.r, img.g, img.b, img.a); //TODO Fix me first ~20 bytes are wrong
 	}
 	return (ret);
 }
@@ -49,7 +51,9 @@ t_bmp			*ft_parse_bmp(char *pth)
 	if ((!(fd = open(pth, O_RDONLY))) > 0)
 		return (NULL);
 	read(fd, &header, sizeof(t_fileheader));
-	if (header.type != 19778 || header.width <= 0 || header.height <= 0)
+	printf("\n%u\n", header.bitppx);
+	if (header.type != 19778 ||
+	header.width <= 0 || header.height <= 0 || header.bitppx != 32)
 		return (NULL);
 	ret->fheader = header;
 	ret->img = read_pixel(header.height * header.width, fd);

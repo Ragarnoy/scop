@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/17 15:00:44 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/18 16:01:36 by tlernoul         ###   ########.fr       */
 /*   Updated: 2020/06/12 13:06:07 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -25,6 +25,12 @@
 # include "GLFW/glfw3.h"
 # include "../libft/libft.h"
 # include <math.h>
+
+typedef struct 		s_obj
+{
+	float 			*vertices;
+	unsigned int	*indices;
+}					t_obj;
 
 typedef struct 		s_env
 {
@@ -54,5 +60,6 @@ int	    loadFrag(char *pth);
 void	glShaderLogError(int shader, int shaderType);
 void	glProgramLogError(int program);
 t_env	*get_env(void);
+t_obj 	*parse_obj(char *pth);
 
 #endif

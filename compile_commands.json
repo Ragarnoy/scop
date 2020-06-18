@@ -102,6 +102,23 @@
   "file": "src/utils.c"
  },
  {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
+   "-o",
+   "obj/obj_parsing.o",
+   "-c",
+   "src/obj_parsing.c"
+  ],
+  "file": "src/obj_parsing.c"
+ },
+ {
   "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
   "arguments": [
    "gcc",
@@ -1013,5 +1030,16 @@
    "ft_parse_bmp.c"
   ],
   "file": "ft_parse_bmp.c"
+ },
+ {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "arguments": [
+   "gcc",
+   "-c",
+   "-o",
+   "ft_atof.o",
+   "ft_atof.c"
+  ],
+  "file": "ft_atof.c"
  }
 ]
