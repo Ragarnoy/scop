@@ -119,6 +119,23 @@
   "file": "src/obj_parsing.c"
  },
  {
+  "directory": "/Users/tlernoul/Boulot/Projets/scop",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-Iinclude",
+   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
+   "-o",
+   "obj/lst_util.o",
+   "-c",
+   "src/lst_util.c"
+  ],
+  "file": "src/lst_util.c"
+ },
+ {
   "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
   "arguments": [
    "gcc",

@@ -6,14 +6,14 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 14:00:13 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/12 17:03:32 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/19 12:20:33 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/scop.h"
 #include <fcntl.h>
 
-int	loadVert(char *pth)
+int	load_vert(char *pth)
 {
 	int 	fd;
 	int	    vertShader;
@@ -41,7 +41,7 @@ int	loadVert(char *pth)
 }
 
 
-int	loadFrag(char *pth)
+int	load_frag(char *pth)
 {
 	int 	fd;
 	int	    fragShader;
