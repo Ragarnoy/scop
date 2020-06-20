@@ -17,11 +17,11 @@
 
 t_faces	*ret_faces(char *str)
 {
-	int		i;
-	int		tmp;
-
-	tmp = 0;
-	i = 0;
+//	int		i;
+//	int		tmp;
+//
+//	tmp = 0;
+//	i = 0;
 	(void)str;
 	return (NULL);
 }
@@ -62,7 +62,6 @@ t_obj	*fill_list(int fd)
 		return (NULL);
 	while (get_next_line(fd, &buf) > 0)
 	{
-		ft_putendl("Bite1");
 		//TODO Might leak
 		if (!ret->vertices && buf[0] == 'v' && (curv = ret_vertices(buf)))
 			ret->vertices = curv;
