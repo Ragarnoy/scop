@@ -33,7 +33,7 @@ $(NAME): $(OBJ)
 	@printf "Making necessary libs                                           \n"
 	@make -C libft 2> /dev/null || true
 	@printf "Libraries done \033[32m✔\033[0m \nLinking...                    \n"
-	@$(CC) $(LDLIBS) $^ -o $@
+	@$(CC) $^ -o $@ $(LDLIBS)
 	@printf "OBJs linked. 🔗                                                  \n"
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c

@@ -16,6 +16,7 @@
 # define MAX_FD 400
 # define MAX_INT 2147483647
 
+# include <stdint.h>
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
