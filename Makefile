@@ -2,7 +2,7 @@ NAME = scop
 CC = clang
 CFLAGS = -Wall -Wextra -Werror -g
 CPPFLAGS = -I ./include `pkg-config --cflags glfw3`
-LDLIBS = -Llibft -lft `pkg-config --static --libs glfw3` -framework OpenGL -framework AppKit
+#LDLIBS = -Llibft -lft `pkg-config --static --libs glfw3` -framework OpenGL -framework AppKit
 INC_PATH = include/
 OBJ_PATH = obj
 SRC_PATH = src
@@ -18,6 +18,12 @@ SRC_NAME = main.c \
 OBJ_NAME = $(SRC_NAME:c=o)
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
+
+ifeq ($(shell uname -s), Darwin)
+	LDLIBS		=	-L ./libft -lft `pkg-config --static --libs glfw3` -framework OpenGL -framework Appkit
+else ifeq ($(shell uname -s), Linux)
+	LDLIBS		=	-L ./libft -lft `pkg-config --static --libs glfw3` -lGL -lX11 -lpthread -lXrandr -lXi -ldl
+endif
 
 
 all: $(NAME)

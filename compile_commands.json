@@ -1,144 +1,144 @@
 [
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop",
+  "directory": "/home/rag/CLionProjects/scop",
   "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-g",
-   "-Iinclude",
-   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
+   "clang",
    "-o",
    "obj/main.o",
    "-c",
-   "src/main.c"
+   "src/main.c",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-I",
+   "./include",
+   "-I/usr/local/include"
   ],
   "file": "src/main.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop",
+  "directory": "/home/rag/CLionProjects/scop",
   "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-g",
-   "-Iinclude",
-   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
+   "clang",
    "-o",
    "obj/glad.o",
    "-c",
-   "src/glad.c"
+   "src/glad.c",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-I",
+   "./include",
+   "-I/usr/local/include"
   ],
   "file": "src/glad.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop",
+  "directory": "/home/rag/CLionProjects/scop",
   "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-g",
-   "-Iinclude",
-   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
-   "-o",
-   "obj/init.o",
-   "-c",
-   "src/init.c"
-  ],
-  "file": "src/init.c"
- },
- {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-g",
-   "-Iinclude",
-   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
-   "-o",
-   "obj/err.o",
-   "-c",
-   "src/err.c"
-  ],
-  "file": "src/err.c"
- },
- {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-g",
-   "-Iinclude",
-   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
+   "clang",
    "-o",
    "obj/glLoader.o",
    "-c",
-   "src/glLoader.c"
+   "src/glLoader.c",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-I",
+   "./include",
+   "-I/usr/local/include"
   ],
   "file": "src/glLoader.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop",
+  "directory": "/home/rag/CLionProjects/scop",
   "arguments": [
-   "gcc",
+   "clang",
+   "-o",
+   "obj/err.o",
+   "-c",
+   "src/err.c",
    "-Wall",
-   "-Wextra",
    "-Werror",
-   "-g",
-   "-Iinclude",
-   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
+   "-Wextra",
+   "-I",
+   "./include",
+   "-I/usr/local/include"
+  ],
+  "file": "src/err.c"
+ },
+ {
+  "directory": "/home/rag/CLionProjects/scop",
+  "arguments": [
+   "clang",
+   "-o",
+   "obj/init.o",
+   "-c",
+   "src/init.c",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-I",
+   "./include",
+   "-I/usr/local/include"
+  ],
+  "file": "src/init.c"
+ },
+ {
+  "directory": "/home/rag/CLionProjects/scop",
+  "arguments": [
+   "clang",
    "-o",
    "obj/utils.o",
    "-c",
-   "src/utils.c"
+   "src/utils.c",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-I",
+   "./include",
+   "-I/usr/local/include"
   ],
   "file": "src/utils.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop",
+  "directory": "/home/rag/CLionProjects/scop",
   "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-g",
-   "-Iinclude",
-   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
+   "clang",
    "-o",
    "obj/obj_parsing.o",
    "-c",
-   "src/obj_parsing.c"
+   "src/obj_parsing.c",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-I",
+   "./include",
+   "-I/usr/local/include"
   ],
   "file": "src/obj_parsing.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop",
+  "directory": "/home/rag/CLionProjects/scop",
   "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-g",
-   "-Iinclude",
-   "-I/Users/tlernoul/.brew/Cellar/glfw/3.3.2/include",
+   "clang",
    "-o",
    "obj/lst_util.o",
    "-c",
-   "src/lst_util.c"
+   "src/lst_util.c",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-I",
+   "./include",
+   "-I/usr/local/include"
   ],
   "file": "src/lst_util.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_bzero.o",
@@ -147,9 +147,9 @@
   "file": "ft_bzero.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_isalnum.o",
@@ -158,9 +158,9 @@
   "file": "ft_isalnum.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_isalpha.o",
@@ -169,9 +169,9 @@
   "file": "ft_isalpha.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_isascii.o",
@@ -180,9 +180,9 @@
   "file": "ft_isascii.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_isblank.o",
@@ -191,9 +191,9 @@
   "file": "ft_isblank.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_isdigit.o",
@@ -202,9 +202,9 @@
   "file": "ft_isdigit.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_isprint.o",
@@ -213,9 +213,9 @@
   "file": "ft_isprint.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_memalloc.o",
@@ -224,9 +224,9 @@
   "file": "ft_memalloc.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_memccpy.o",
@@ -235,9 +235,9 @@
   "file": "ft_memccpy.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_memchr.o",
@@ -246,9 +246,9 @@
   "file": "ft_memchr.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_memcmp.o",
@@ -257,9 +257,9 @@
   "file": "ft_memcmp.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_memcpy.o",
@@ -268,9 +268,9 @@
   "file": "ft_memcpy.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_memdel.o",
@@ -279,9 +279,9 @@
   "file": "ft_memdel.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_memmove.o",
@@ -290,9 +290,9 @@
   "file": "ft_memmove.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_memset.o",
@@ -301,9 +301,9 @@
   "file": "ft_memset.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strcat.o",
@@ -312,9 +312,9 @@
   "file": "ft_strcat.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strchr.o",
@@ -323,9 +323,9 @@
   "file": "ft_strchr.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strdup.o",
@@ -334,9 +334,9 @@
   "file": "ft_strdup.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_striter.o",
@@ -345,9 +345,9 @@
   "file": "ft_striter.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_striteri.o",
@@ -356,9 +356,9 @@
   "file": "ft_striteri.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strlcat.o",
@@ -367,9 +367,9 @@
   "file": "ft_strlcat.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strlen.o",
@@ -378,9 +378,9 @@
   "file": "ft_strlen.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strmap.o",
@@ -389,9 +389,9 @@
   "file": "ft_strmap.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strncat.o",
@@ -400,9 +400,9 @@
   "file": "ft_strncat.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strrchr.o",
@@ -411,9 +411,9 @@
   "file": "ft_strrchr.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_tolower.o",
@@ -422,9 +422,9 @@
   "file": "ft_tolower.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_toupper.o",
@@ -433,9 +433,9 @@
   "file": "ft_toupper.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strstr.o",
@@ -444,9 +444,9 @@
   "file": "ft_strstr.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strcmp.o",
@@ -455,9 +455,9 @@
   "file": "ft_strcmp.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strcpy.o",
@@ -466,9 +466,9 @@
   "file": "ft_strcpy.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_atoi.o",
@@ -477,9 +477,9 @@
   "file": "ft_atoi.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strncmp.o",
@@ -488,9 +488,9 @@
   "file": "ft_strncmp.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strncpy.o",
@@ -499,9 +499,9 @@
   "file": "ft_strncpy.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strnstr.o",
@@ -510,9 +510,9 @@
   "file": "ft_strnstr.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_putchar.o",
@@ -521,9 +521,9 @@
   "file": "ft_putchar.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_putchar_fd.o",
@@ -532,9 +532,9 @@
   "file": "ft_putchar_fd.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_putendl.o",
@@ -543,9 +543,9 @@
   "file": "ft_putendl.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_putendl_fd.o",
@@ -554,9 +554,9 @@
   "file": "ft_putendl_fd.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_putnbr.o",
@@ -565,9 +565,9 @@
   "file": "ft_putnbr.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_putnbr_fd.o",
@@ -576,9 +576,9 @@
   "file": "ft_putnbr_fd.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_putstr.o",
@@ -587,9 +587,9 @@
   "file": "ft_putstr.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_putstr_fd.o",
@@ -598,9 +598,9 @@
   "file": "ft_putstr_fd.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strequ.o",
@@ -609,9 +609,9 @@
   "file": "ft_strequ.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strjoin.o",
@@ -620,9 +620,9 @@
   "file": "ft_strjoin.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strnequ.o",
@@ -631,9 +631,9 @@
   "file": "ft_strnequ.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strsplit.o",
@@ -642,9 +642,9 @@
   "file": "ft_strsplit.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strsub.o",
@@ -653,9 +653,9 @@
   "file": "ft_strsub.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strtrim.o",
@@ -664,9 +664,9 @@
   "file": "ft_strtrim.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strdel.o",
@@ -675,9 +675,9 @@
   "file": "ft_strdel.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strnew.o",
@@ -686,9 +686,9 @@
   "file": "ft_strnew.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strclr.o",
@@ -697,9 +697,9 @@
   "file": "ft_strclr.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strmapi.o",
@@ -708,9 +708,9 @@
   "file": "ft_strmapi.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_itoa.o",
@@ -719,9 +719,9 @@
   "file": "ft_itoa.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_getndigits.o",
@@ -730,9 +730,9 @@
   "file": "ft_getndigits.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_lstadd.o",
@@ -741,9 +741,9 @@
   "file": "ft_lstadd.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_lstnew.o",
@@ -752,9 +752,9 @@
   "file": "ft_lstnew.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_lstdelone.o",
@@ -763,9 +763,9 @@
   "file": "ft_lstdelone.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_lstdel.o",
@@ -774,9 +774,9 @@
   "file": "ft_lstdel.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_lstiter.o",
@@ -785,9 +785,9 @@
   "file": "ft_lstiter.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_lstmap.o",
@@ -796,9 +796,9 @@
   "file": "ft_lstmap.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_putlst.o",
@@ -807,9 +807,9 @@
   "file": "ft_putlst.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_str_is_alpha.o",
@@ -818,9 +818,9 @@
   "file": "ft_str_is_alpha.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_str_is_lowercase.o",
@@ -829,9 +829,9 @@
   "file": "ft_str_is_lowercase.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_str_is_numeric.o",
@@ -840,9 +840,9 @@
   "file": "ft_str_is_numeric.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_str_is_printable.o",
@@ -851,9 +851,9 @@
   "file": "ft_str_is_printable.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_str_is_uppercase.o",
@@ -862,9 +862,9 @@
   "file": "ft_str_is_uppercase.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strcapitalize.o",
@@ -873,9 +873,9 @@
   "file": "ft_strcapitalize.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strlowcase.o",
@@ -884,9 +884,9 @@
   "file": "ft_strlowcase.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strupcase.o",
@@ -895,9 +895,9 @@
   "file": "ft_strupcase.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_lstsplit.o",
@@ -906,9 +906,9 @@
   "file": "ft_lstsplit.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strappend.o",
@@ -917,9 +917,9 @@
   "file": "ft_strappend.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strclen.o",
@@ -928,9 +928,9 @@
   "file": "ft_strclen.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strlenc.o",
@@ -939,9 +939,9 @@
   "file": "ft_strlenc.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strclenc.o",
@@ -950,9 +950,9 @@
   "file": "ft_strclenc.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strrep.o",
@@ -961,9 +961,9 @@
   "file": "ft_strrep.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "get_next_line.o",
@@ -972,9 +972,9 @@
   "file": "get_next_line.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_countwords.o",
@@ -983,9 +983,9 @@
   "file": "ft_countwords.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_retwords.o",
@@ -994,9 +994,9 @@
   "file": "ft_retwords.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_itoabase.o",
@@ -1005,9 +1005,9 @@
   "file": "ft_itoabase.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_hsl_to_rgb.o",
@@ -1016,9 +1016,9 @@
   "file": "ft_hsl_to_rgb.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_hsv_to_rgb.o",
@@ -1027,9 +1027,9 @@
   "file": "ft_hsv_to_rgb.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_strcmp_nocase.o",
@@ -1038,9 +1038,9 @@
   "file": "ft_strcmp_nocase.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_parse_bmp.o",
@@ -1049,9 +1049,9 @@
   "file": "ft_parse_bmp.c"
  },
  {
-  "directory": "/Users/tlernoul/Boulot/Projets/scop/libft",
+  "directory": "/home/rag/CLionProjects/scop/libft",
   "arguments": [
-   "gcc",
+   "clang",
    "-c",
    "-o",
    "ft_atof.o",
