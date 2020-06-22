@@ -1,9 +1,8 @@
 NAME = scop
-CC = gcc
+CC = clang
 CFLAGS = -Wall -Wextra -Werror -g
-CPPFLAGS = -Iinclude `pkg-config --cflags glfw3`
-LDLIBS = -lft `pkg-config --static --libs glfw3` -framework OpenGL -framework AppKit
-LDFLAGS = -Llibft
+CPPFLAGS = -I ./include `pkg-config --cflags glfw3`
+LDLIBS = -Llibft -lft `pkg-config --static --libs glfw3` -framework OpenGL -framework AppKit
 INC_PATH = include/
 OBJ_PATH = obj
 SRC_PATH = src
@@ -28,7 +27,7 @@ $(NAME): $(OBJ)
 	@printf "Making necessary libs                                           \n"
 	@make -C libft 2> /dev/null || true
 	@printf "Libraries done \033[32m✔\033[0m \nLinking...                    \n"
-	@$(CC) $(LDLIBS) $(LDFLAGS) $^ -o $@
+	@$(CC) $(LDLIBS) $^ -o $@
 	@printf "OBJs linked. 🔗                                                  \n"
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c

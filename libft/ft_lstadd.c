@@ -6,7 +6,7 @@
 /*   By: tlernoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 18:03:14 by tlernoul          #+#    #+#             */
-/*   Updated: 2018/01/16 20:26:12 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/22 17:39:36 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,3 +17,4 @@ void	ft_lstadd(t_list **alst, t_list *new)
 	new->next = *alst;
 	*alst = new;
 }
+

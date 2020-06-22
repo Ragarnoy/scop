@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 13:56:11 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/18 15:34:41 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/22 16:40:21 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,16 @@ double		ft_atof(const char *str)
 	ret = 0.0f;
 	if (!str)
 		return (0.0f);
-	while (!ft_isdigit(str[i++]))
+	while (!ft_isdigit(str[i]))
+	{
 		if (str[i] == '-')
 			sign = -1.0f;
+		i++;
+	}
 	while (ft_isdigit(str[i]))
 	{
 		ret *= 10;
-		ret += (int)(str[i++] - '0');
+		ret += (double)(str[i++] - '0');
 	}
 	if (str[i] == '.')
 		ret = decimal(str, i, ret);
