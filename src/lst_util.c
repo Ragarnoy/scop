@@ -25,16 +25,16 @@ t_vert		*lst_vertnew(float x, float y, float z)
 	return (new);
 }
 
-t_faces 	*lst_newface(uint16_t x, uint16_t y, uint16_t z, uint16_t w)
+t_faces 	*lst_facenew(uint16_t a, uint16_t b, uint16_t c, uint16_t d)
 {
 	t_faces	*new;
 	if (!(new = ft_memalloc(sizeof(t_faces))))
 		return (NULL);
 
-	new->uv.x = x;
-	new->uv.y = y;
-	new->uv.z = z;
-	new->uv.w = w;
+	new->uv.x = a;
+	new->uv.y = b;
+	new->uv.z = c;
+	new->uv.w = d;
 	new->next = NULL;
 	return (new);
 }

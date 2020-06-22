@@ -56,7 +56,7 @@ int setup_texture(t_env *env)
 int	setup_vertex(t_env *env)
 {
     // TODO ideally pass shapes here maybe?
-//	float vertices[] = {
+//	float verts[] = {
 //			0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  // bottom right
 //			-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,  // bottom left
 //			0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f   // top

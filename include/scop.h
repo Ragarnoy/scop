@@ -56,8 +56,8 @@ typedef struct 		s_faces
 
 typedef struct 		s_obj
 {
-	t_vert 			*vertices;
-	t_faces			*indices;
+	t_vert 			*verts;
+	t_faces			*faces;
 }					t_obj;
 
 typedef struct 		s_env
@@ -89,7 +89,7 @@ t_env	*get_env(void);
 t_obj 	*parse_obj(char *pth);
 t_vert	*lst_vertnew(float x, float y, float z);
 void	lst_vertdel(t_vert **list);
-t_faces *lst_newface(uint16_t a, uint16_t b, uint16_t c, uint16_t d);
+t_faces *lst_facenew(uint16_t a, uint16_t b, uint16_t c, uint16_t d);
 void 	lst_facesdel(t_faces **list);
 
 #endif
