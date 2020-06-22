@@ -37,9 +37,12 @@ double		ft_atof(const char *str)
 	ret = 0.0f;
 	if (!str)
 		return (0.0f);
-	while (!ft_isdigit(str[i++]))
-		if (str[i] == '-')
-			sign = -1.0f;
+	while (!ft_isdigit(str[i]))
+	{
+        if (str[i] == '-')
+            sign = -1.0f;
+        i++;
+    }
 	while (ft_isdigit(str[i]))
 	{
 		ret *= 10;

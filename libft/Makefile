@@ -35,7 +35,7 @@ all : $(NAME)
 
 %.o: %.c
 	@printf "Compiling files..... $@                                   \r"
-	@gcc -c -o $@ $^
+	@clang -c -o $@ $^
 
 $(NAME): $(OBJ)
 	@printf "Functions archived. \033[32m✔\033[0m                      \n"
