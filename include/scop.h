@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/19 15:52:36 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/22 19:13:32 by tlernoul         ###   ########.fr       */
 /*   Updated: 2020/06/12 13:06:07 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -56,8 +56,8 @@ typedef struct 		s_faces
 
 typedef struct 		s_obj
 {
-	t_vert 			*verts;
-	t_faces			*faces;
+	t_vert 			*vertices;
+	t_faces			*indices;
 }					t_obj;
 
 typedef struct 		s_env
@@ -91,5 +91,7 @@ t_vert	*lst_vertnew(float x, float y, float z);
 void	lst_vertdel(t_vert **list);
 t_faces *lst_facenew(uint16_t a, uint16_t b, uint16_t c, uint16_t d);
 void 	lst_facesdel(t_faces **list);
+void	vertice_add(t_vert *vert, t_obj *ret, t_vert **last_vert);
+void	face_add(t_faces *face, t_obj *ret, t_faces **last_face);
 
 #endif

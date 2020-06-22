@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 12:30:37 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/19 13:05:10 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/22 19:23:47 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,23 @@ void 	lst_facesdel(t_faces **list)
 		tmp = tmp->next;
 	}
 	*list = NULL;
+}
+
+void	vertice_add(t_vert *vert, t_obj *ret, t_vert **last_vert)
+{
+	if (*last_vert == NULL)
+		ret->vertices = vert;
+	else
+		(*last_vert)->next = vert;
+	*last_vert = vert;
+}
+
+
+void	face_add(t_faces *face, t_obj *ret, t_faces **last_face)
+{
+	if (*last_face == NULL)
+		ret->indices = face;
+	else
+		(*last_face)->next = face;
+	*last_face = face;
 }
