@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 13:56:11 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/23 12:18:34 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/23 12:18:37 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,10 @@ double		ft_atof(const char *str)
 		return (0.0f);
 	while (!ft_isdigit(str[i]))
 	{
-<<<<<<< HEAD
         if (str[i] == '-')
             sign = -1.0f;
         i++;
     }
-=======
-		if (str[i] == '-')
-			sign = -1.0f;
-		i++;
-	}
->>>>>>> feature/makefile
 	while (ft_isdigit(str[i]))
 	{
 		ret *= 10;
