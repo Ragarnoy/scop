@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/23 12:18:34 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/23 14:34:20 by tlernoul         ###   ########.fr       */
 /*   Updated: 2020/06/12 13:06:07 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -25,6 +25,29 @@
 # include "GLFW/glfw3.h"
 # include "../libft/libft.h"
 # include <math.h>
+
+typedef struct 		s_mat4
+{
+	float 			x[4];
+	float 			y[4];
+	float 			z[4];
+	float 			w[4];
+}					t_mat4;
+
+typedef struct 		s_mat3
+{
+	float 			x[3];
+	float 			y[3];
+	float 			z[3];
+}					t_mat3;
+
+typedef struct 		s_fvec4
+{
+	float 			x;
+	float 			y;
+	float 			z;
+	float 			w;
+}					t_fvec4;
 
 typedef struct 		s_uvec4
 {
@@ -63,6 +86,7 @@ typedef struct 		s_obj
 typedef struct 		s_env
 {
 	GLFWwindow      *window;
+	t_obj			*obj;
 	unsigned int    vbo;
     unsigned int    vao;
 	unsigned int    ebo;

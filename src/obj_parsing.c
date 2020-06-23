@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 13:26:42 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/23 12:18:34 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/23 14:41:13 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_faces	*ret_faces(char *str)
 	ft_bzero(tmp, sizeof(int) * 4);
 	spaces = 0;
 	i = 0;
-	while (i < size)
+	while (i < size && spaces < 4)
 	{
 		if (ft_isdigit(str[i]))
 		{
@@ -53,7 +53,7 @@ t_vert 	*ret_vertices(char *str)
 	ft_bzero(tmp, sizeof(float) * 3);
 	spaces = 0;
 	i = 0;
-	while (i < size)
+	while (i < size && spaces < 3)
 	{
 		if (str[i] == '-' || ft_isdigit(str[i]))
 		{
@@ -93,15 +93,6 @@ t_obj	*fill_list(int fd, t_obj *ret)
 			face_add(curf, ret, &last_curf);
 		}
 	}
-	curv = ret->vertices;
-	int i = 0;
-	while (curv)
-	{
-		printf("uhh %f %f %f\n", curv->v.x, curv->v.y, curv->v.z);
-		curv = curv->next;
-		i++;
-	}
-	printf("%d\n", i);
 	return (ret);
 }
 

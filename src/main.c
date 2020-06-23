@@ -6,11 +6,12 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 13:50:39 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/23 12:18:34 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/23 12:44:37 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/scop.h"
+#include <stdio.h>
 
 void	framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
@@ -66,9 +67,9 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2 || !argv[1])
 		shutdown(0);
-	parse_obj(argv[1]);
-	return 1;
 	env = get_env();
+	if (!(env->obj = parse_obj(argv[1])))
+		return (-1);
 	if (!setup_gl(env))
 		return (-1);
     if (!setup_shader(env))

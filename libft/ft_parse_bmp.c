@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 17:47:02 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/18 12:34:25 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/23 12:50:53 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-unsigned char	*read_pixel(int size, int fd)
+unsigned char	*read_pixel(int size, int fd, uint32_t offset)
 {
 	int				i;
 	t_image			img;
@@ -22,6 +22,7 @@ unsigned char	*read_pixel(int size, int fd)
 
 	i = -1;
 	ret = ft_memalloc(sizeof(unsigned char) * (size * 4) + 1);
+	read(fd, &img, offset);
 	while (++i < size)
 	{
 		read(fd, &img, sizeof(t_image));
@@ -56,6 +57,6 @@ t_bmp			*ft_parse_bmp(char *pth)
 	header.width <= 0 || header.height <= 0 || header.bitppx != 32)
 		return (NULL);
 	ret->fheader = header;
-	ret->img = read_pixel(header.height * header.width, fd);
+	ret->img = read_pixel(header.height * header.width, fd, header.offset);
 	return (ret);
 }
