@@ -13,19 +13,19 @@
 #include "../include/scop.h"
 #include <stdio.h>
 
-void	framebuffer_size_callback(GLFWwindow* window, int width, int height)
+void		framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
 	(void)window;
 	glViewport(0, 0, width, height);
 }
 
-void	processInput(GLFWwindow *win)
+void		processInput(GLFWwindow *win)
 {
 	if (glfwGetKey(win, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(win, 1);
 }
 
-int	display_loop(t_env *env)
+static int	display_loop(t_env *env)
 {
 	int     retCode;
 	float   timeValue;
@@ -61,7 +61,7 @@ int	display_loop(t_env *env)
 	return (retCode);
 }
 
-int	main(int argc, char *argv[])
+int			main(int argc, char *argv[])
 {
 	t_env *env;
 

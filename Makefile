@@ -13,6 +13,7 @@ SRC_NAME = main.c \
 	   glLoader.c \
 	   utils.c \
 	   obj_parsing.c \
+	   libm/vec3_arithmetics.c \
 	   lst_util.c
 
 OBJ_NAME = $(SRC_NAME:c=o)

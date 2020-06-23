@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/23 14:34:20 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/23 16:43:21 by tlernoul         ###   ########.fr       */
 /*   Updated: 2020/06/12 13:06:07 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -22,23 +22,19 @@
 # define VAO env->vao
 # define SHADERPROGRAM env->shProgram
 # include <glad/glad.h>
+# include <math.h>
 # include "GLFW/glfw3.h"
 # include "../libft/libft.h"
 # include <math.h>
 
 typedef struct 		s_mat4
 {
-	float 			x[4];
-	float 			y[4];
-	float 			z[4];
-	float 			w[4];
+	float 			m[4 * 4];
 }					t_mat4;
 
 typedef struct 		s_mat3
 {
-	float 			x[3];
-	float 			y[3];
-	float 			z[3];
+	float 			m[3 * 3];
 }					t_mat3;
 
 typedef struct 		s_fvec4
@@ -94,6 +90,36 @@ typedef struct 		s_env
 	int             shProgram;
 
 }			        t_env;
+
+/*
+ * LIBM
+ */
+
+/*
+ * Matrices
+ */
+
+t_mat4 m4_add(t_mat4 a, t_mat4 b);
+
+/*
+ * Vectors
+ */
+
+t_fvec3 fv3_add(t_fvec3 a, t_fvec3 b);
+t_fvec3 fv3_sub(t_fvec3 a, t_fvec3 b);
+t_fvec3 fv3_mul(t_fvec3 a, t_fvec3 b);
+t_fvec3 fv3_fmul(t_fvec3 a, float f);
+t_fvec3	fvec3_scale(t_fvec3 v, float f);
+t_fvec3	fvec3_cross(t_fvec3 a, t_fvec3 b);
+t_fvec3	fvec3_copy(t_fvec3 *in, t_fvec3 *to_copy);
+t_fvec3	fvec3_normalize(t_fvec3 v);
+float	fv3_dot(t_fvec3 a, t_fvec3 b);
+float	fvec3_magnitude(t_fvec3 v);
+void	fvec3_set(t_fvec3 *v, float f);
+
+/*
+ * SCOP
+ */
 
 int	    shutdown(int err);
 int	    setup_gl(t_env *env);
