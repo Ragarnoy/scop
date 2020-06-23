@@ -2,7 +2,6 @@ NAME = scop
 CC = clang
 CFLAGS = -Wall -Wextra -Werror -g
 CPPFLAGS = -I ./include `pkg-config --cflags glfw3`
-#LDLIBS = -Llibft -lft `pkg-config --static --libs glfw3` -framework OpenGL -framework AppKit
 INC_PATH = include/
 OBJ_PATH = obj
 SRC_PATH = src
@@ -14,6 +13,11 @@ SRC_NAME = main.c \
 	   utils.c \
 	   obj_parsing.c \
 	   libm/vec3_arithmetics.c \
+	   libm/vec3_algebra.c \
+	   libm/vec3_self.c \
+	   libm/mat4_algebra.c \
+	   libm/mat4_self.c \
+	   libm/mat4_arithmetics.c \
 	   lst_util.c
 
 OBJ_NAME = $(SRC_NAME:c=o)

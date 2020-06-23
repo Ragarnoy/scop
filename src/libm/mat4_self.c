@@ -12,17 +12,26 @@
 
 #include "../../include/scop.h"
 
-void		fvec3_set(t_fvec3 *v, float f)
+void		m4_set(t_mat4 *m, float f)
 {
-	v->x = f;
-	v->y = f;
-	v->z = f;
+	int i;
+
+	i = -1;
+	while (++i < 16)
+	{
+		if ((int)f == 0x7FFFFFFF)
+			m->m[i] = (i % 5 == 0 ? 1 : 0);
+		else
+			m->m[i] = f;
+	}
 }
 
-t_fvec3 	fvec3_copy(t_fvec3 *in, t_fvec3 *to_copy)
+t_mat4	 	m4_copy(t_mat4 *in, t_mat4 to_copy)
 {
-	in->x = to_copy->x;
-	in->y = to_copy->y;
-	in->z = to_copy->z;
+	int i;
+
+	i = -1;
+	while (++i < 16)
+		in->m[i] = to_copy.m[i];
 	return (*in);
 }

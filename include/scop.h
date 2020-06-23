@@ -27,6 +27,13 @@
 # include "../libft/libft.h"
 # include <math.h>
 
+typedef enum 		e_axis
+{
+	AXIS_X,
+	AXIS_Y,
+	AXIS_Z
+}					t_axis;
+
 typedef struct 		s_mat4
 {
 	float 			m[4 * 4];
@@ -99,7 +106,14 @@ typedef struct 		s_env
  * Matrices
  */
 
-t_mat4 m4_add(t_mat4 a, t_mat4 b);
+t_mat4	m4_transpose(t_mat4 m);
+t_mat4	m4_add(t_mat4 a, t_mat4 b);
+t_mat4	m4_sub(t_mat4 a, t_mat4 b);
+t_mat4	m4_mul(t_mat4 a, t_mat4 b);
+t_mat4	m4_scale(t_mat4 m, float f);
+t_mat4	m4_copy(t_mat4 *in, t_mat4 to_copy);
+t_mat4	m4_rotate_axis(t_mat4 m, t_axis axis, float angle);
+void	m4_set(t_mat4 *m, float f);
 
 /*
  * Vectors

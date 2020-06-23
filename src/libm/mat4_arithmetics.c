@@ -54,3 +54,13 @@ t_mat4		m4_mul(t_mat4 a, t_mat4 b)
 	return (m);
 }
 
+t_mat4		m4_scale(t_mat4 m, float f)
+{
+	int i;
+
+	i = -1;
+	while (++i < 16)
+		m.m[i] *= f;
+	return (m);
+}
+

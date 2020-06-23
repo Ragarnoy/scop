@@ -12,38 +12,69 @@
 
 #include "../../include/scop.h"
 
-float 		fvec3_magnitude(t_fvec3 v)
+t_mat4 		m4_transpose(t_mat4 m)
 {
-	return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z));
+	int 	x;
+	int 	y;
+	t_mat4	t;
+
+	x = -1;
+	while (++x < 4)
+	{
+		y = -1;
+		while (++y < 4)
+			t.m[y * 4 + x] = m.m[x * 4 + y];
+	}
+	m = m4_copy(&m, t);
+	return (m);
 }
 
-t_fvec3		fvec3_normalize(t_fvec3 v)
+static void	ret_axis_x_rot_matrix(t_mat4 *m, float theta)
 {
-	float mag;
-
-	mag = fvec3_magnitude(v);
-	v.x /= mag;
-	v.y /= mag;
-	v.z /= mag;
-	return (v);
+	m->m[5] = cos(theta);
+	m->m[6] = sin(theta);
+	m->m[9] = -sin(theta);
+	m->m[10] = cos(theta);
 }
 
-t_fvec3		fvec3_scale(t_fvec3 v, float f)
+static void	ret_axis_y_rot_matrix(t_mat4 *m, float theta)
 {
-	fvec3_magnitude(v);
-	v.x *= f;
-	v.y *= f;
-	v.z *= f;
-	return (v);
+	m->m[0] = cos(theta);
+	m->m[2] = -sin(theta);
+	m->m[8] = sin(theta);
+	m->m[10] = cos(theta);
 }
 
-t_fvec3		fvec3_cross(t_fvec3 a, t_fvec3 b)
-{
-	t_fvec3		tmp;
 
-	tmp.x = a.y * b.z - a.z * b.y;
-	tmp.y = a.z * b.x - a.x * b.z;
-	tmp.z = a.x * b.y - a.y * b.x;
-	fvec3_copy(&a, &tmp);
-	return (a);
+static void	ret_axis_z_rot_matrix(t_mat4 *m, float theta)
+{
+	m->m[0] = cos(theta);
+	m->m[1] = sin(theta);
+	m->m[4] = -sin(theta);
+	m->m[5] = cos(theta);
+}
+
+t_mat4 		m4_rotate_axis(t_mat4 m, t_axis axis, float angle)
+{
+	t_mat4	r;
+	float	theta;
+
+	m4_set(&r, (float)0x7FFFFFFF);
+	theta = angle * (M_PI / 180);
+	if (axis == AXIS_X)
+	{
+		ret_axis_x_rot_matrix(&r, theta);
+		m = m4_mul(m, r);
+	}
+	if (axis == AXIS_Y)
+	{
+		ret_axis_y_rot_matrix(&r, theta);
+		m = m4_mul(m, r);
+	}
+	if (axis == AXIS_Z)
+	{
+		ret_axis_z_rot_matrix(&r, theta);
+		m = m4_mul(m, r);
+	}
+	return (m);
 }
