@@ -3,3 +3,4 @@
 scop
 libft/libft.a
 obj
+compile_commands.json

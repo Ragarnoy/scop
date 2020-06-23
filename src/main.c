@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 13:50:39 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/22 14:46:36 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/23 12:18:34 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	display_loop(t_env *env)
 		_greenValue = colorShift + 0.4f;
 		_redValue = colorShift + 0.4f;
 		_blueValue = colorShift + 0.4f;
-		set_uniform_4f("vertexColor", _redValue, _greenValue, _blueValue, 1.0f);
+//		set_uniform_4f("vertexColor", _redValue, _greenValue, _blueValue, 1.0f);
 		glBindTexture(GL_TEXTURE_2D, env->texture);
 		glBindVertexArray(env->vao);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 16:32:59 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/18 12:39:44 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/23 12:18:34 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int setup_texture(t_env *env)
 int	setup_vertex(t_env *env)
 {
     // TODO ideally pass shapes here maybe?
-//	float verts[] = {
+//	float vertices[] = {
 //			0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  // bottom right
 //			-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,  // bottom left
 //			0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f   // top
