@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/23 16:43:21 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/24 16:03:23 by tlernoul         ###   ########.fr       */
 /*   Updated: 2020/06/12 13:06:07 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -73,6 +73,13 @@ typedef struct 		s_vert
 	struct s_vert	*next;
 }					t_vert;
 
+typedef struct		s_camera
+{
+	t_fvec3			cam_pos;
+	t_fvec3 		cam_up;
+	t_fvec3 		cam_front;
+	t_fvec3 		cam_right;
+}					t_camera;
 
 typedef struct 		s_faces
 {
@@ -88,14 +95,14 @@ typedef struct 		s_obj
 
 typedef struct 		s_env
 {
-	GLFWwindow      *window;
 	t_obj			*obj;
+	t_camera		cam;
+	GLFWwindow      *window;
 	unsigned int    vbo;
     unsigned int    vao;
 	unsigned int    ebo;
 	unsigned int 	texture;
 	int             shProgram;
-
 }			        t_env;
 
 /*
@@ -106,12 +113,12 @@ typedef struct 		s_env
  * Matrices
  */
 
-t_mat4	m4_transpose(t_mat4 m);
+t_mat4 	m4_transpose(t_mat4 m);
 t_mat4	m4_add(t_mat4 a, t_mat4 b);
 t_mat4	m4_sub(t_mat4 a, t_mat4 b);
 t_mat4	m4_mul(t_mat4 a, t_mat4 b);
 t_mat4	m4_scale(t_mat4 m, float f);
-t_mat4	m4_copy(t_mat4 *in, t_mat4 to_copy);
+t_mat4 	m4_copy(t_mat4 *in, t_mat4 to_copy);
 t_mat4	m4_rotate_axis(t_mat4 m, t_axis axis, float angle);
 void	m4_set(t_mat4 *m, float f);
 

@@ -43,11 +43,13 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
+	@mkdir $(OBJ_PATH)/libm 2> /dev/null || true
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 clean:
 	@printf "Following files have been removed:                              \n"
 	@rm -fv $(OBJ)
+	@rmdir $(OBJ_PATH)/libm 2> /dev/null || true
 	@rmdir $(OBJ_PATH) 2> /dev/null || true
 	@printf "_________________________________\n"
 
