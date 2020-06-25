@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/24 16:03:23 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/25 19:23:23 by tlernoul         ###   ########.fr       */
 /*   Updated: 2020/06/12 13:06:07 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -130,13 +130,13 @@ t_fvec3 fv3_add(t_fvec3 a, t_fvec3 b);
 t_fvec3 fv3_sub(t_fvec3 a, t_fvec3 b);
 t_fvec3 fv3_mul(t_fvec3 a, t_fvec3 b);
 t_fvec3 fv3_fmul(t_fvec3 a, float f);
-t_fvec3	fvec3_scale(t_fvec3 v, float f);
-t_fvec3	fvec3_cross(t_fvec3 a, t_fvec3 b);
-t_fvec3	fvec3_copy(t_fvec3 *in, t_fvec3 *to_copy);
-t_fvec3	fvec3_normalize(t_fvec3 v);
+t_fvec3	fv3_scale(t_fvec3 v, float f);
+t_fvec3	fv3_cross(t_fvec3 a, t_fvec3 b);
+t_fvec3	fv3_copy(t_fvec3 *in, t_fvec3 *to_copy);
+t_fvec3	fv3_normalize(t_fvec3 v);
 float	fv3_dot(t_fvec3 a, t_fvec3 b);
-float	fvec3_magnitude(t_fvec3 v);
-void	fvec3_set(t_fvec3 *v, float f);
+float	fv3_magnitude(t_fvec3 v);
+void	fv3_set(t_fvec3 *v, float f);
 
 /*
  * SCOP
@@ -156,6 +156,7 @@ void	framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void	processInput(GLFWwindow *win);
 void	glShaderLogError(int shader, int shaderType);
 void	glProgramLogError(int program);
+t_mat4	look_at(t_fvec3 pos, t_fvec3 center, t_fvec3 up);
 t_env	*get_env(void);
 t_obj 	*parse_obj(char *pth);
 t_vert	*lst_vertnew(float x, float y, float z);
