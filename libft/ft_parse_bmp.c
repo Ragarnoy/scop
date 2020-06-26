@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 17:47:02 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/24 17:09:29 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/26 12:24:57 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ unsigned char	*read_pixel(int size, int fd, uint32_t offset)
 	int				i;
 	t_image			img;
 	unsigned char	*ret;
-	unsigned char	tmp[180];
 
 	i = -1;
 	ret = ft_memalloc(sizeof(unsigned char) * (size * 4) + 1);
-	read(fd, tmp, 84);
+	read(fd, &img, offset);
 	while (++i < size)
 	{
 		read(fd, &img, sizeof(t_image));
@@ -31,6 +30,8 @@ unsigned char	*read_pixel(int size, int fd, uint32_t offset)
 		ret[i * 4 + 1] = img.g;
 		ret[i * 4 + 2] = img.b;
 		ret[i * 4 + 3] = img.a;
+		if (i <= 60)
+			printf("%d %d %d %d\n", img.r, img.g, img.b, img.a); //TODO Fix me first ~20 bytes are wrong
 	}
 	return (ret);
 }
