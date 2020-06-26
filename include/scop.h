@@ -6,8 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/26 12:26:21 by tlernoul         ###   ########.fr       */
-/*   Updated: 2020/06/12 13:06:07 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/26 12:31:49 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +102,6 @@ typedef struct 		s_env
 	unsigned int    ebo;
 	unsigned int 	texture;
 	int             shProgram;
-
 }			        t_env;
 
 /*
