@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/25 19:23:23 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/23 14:34:20 by tlernoul         ###   ########.fr       */
 /*   Updated: 2020/06/12 13:06:07 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -98,11 +98,13 @@ typedef struct 		s_env
 	t_obj			*obj;
 	t_camera		cam;
 	GLFWwindow      *window;
+	t_obj			*obj;
 	unsigned int    vbo;
     unsigned int    vao;
 	unsigned int    ebo;
 	unsigned int 	texture;
 	int             shProgram;
+
 }			        t_env;
 
 /*

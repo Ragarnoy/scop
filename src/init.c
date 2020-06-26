@@ -108,8 +108,8 @@ int	setup_shader(t_env *env)
 	int fragShader;
 	int success;
 
-    vertShader = load_vert("src/shaders/triangle.vert");
-	fragShader = load_frag("src/shaders/triangle.frag");
+    vertShader = load_vert("src/shaders/camera.vert");
+	fragShader = load_frag("src/shaders/camera.frag");
 	env->shProgram = glCreateProgram();
 	glAttachShader(env->shProgram, vertShader);
 	glAttachShader(env->shProgram, fragShader);
