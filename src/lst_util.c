@@ -83,3 +83,19 @@ void	face_add(t_faces *face, t_obj *ret, t_faces **last_face)
 		(*last_face)->next = face;
 	*last_face = face;
 }
+
+float 	*delist_verts(t_vert *start)
+{
+	int		i;
+	float 	*ret;
+	t_vert	*tmp;
+
+	i = 0;
+	tmp = start;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	ret = ft_memalloc(sizeof(float) * (i * 3));
+}
