@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/26 12:31:49 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/29 15:41:19 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@
 # define VBO env->vbo
 # define VAO env->vao
 # define SHADERPROGRAM env->shProgram
+# define IDENTITY 0x7FFFFFFF
 # include <glad/glad.h>
 # include <math.h>
 # include "GLFW/glfw3.h"
 # include "../libft/libft.h"
 # include <math.h>
+# include <stdio.h> //TODO remove me and the rest
 
 typedef enum 		e_axis
 {
@@ -119,6 +121,7 @@ t_mat4	m4_mul(t_mat4 a, t_mat4 b);
 t_mat4	m4_scale(t_mat4 m, float f);
 t_mat4 	m4_copy(t_mat4 *in, t_mat4 to_copy);
 t_mat4	m4_rotate_axis(t_mat4 m, t_axis axis, float angle);
+t_mat4	m4_translate(t_mat4 mat, t_fvec3 vec);
 void	m4_set(t_mat4 *m, float f);
 
 /*
@@ -138,6 +141,13 @@ float	fv3_magnitude(t_fvec3 v);
 void	fv3_set(t_fvec3 *v, float f);
 
 /*
+ * Misc
+ */
+
+float 	deg_to_rad(float deg);
+float 	rad_to_deg(float deg);
+
+/*
  * SCOP
  */
 
@@ -149,13 +159,16 @@ int		setup_texture(t_env *env);
 int	    load_vert(char *pth);
 int	    load_frag(char *pth);
 void 	set_uniform_4f(char *uniform, float r, float g, float b, float a);
+void 	set_uniform_m4(char *uniform, unsigned int size, int transpose, const float *mat);
 void 	set_uniform_3f(char *uniform, float r, float g, float b);
+void 	set_uniform_i(char *uniform, int a);
 void	printAndTerminate(char *str);
 void	framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void	processInput(GLFWwindow *win);
 void	glShaderLogError(int shader, int shaderType);
 void	glProgramLogError(int program);
 t_mat4	look_at(t_fvec3 pos, t_fvec3 center, t_fvec3 up);
+t_mat4 	perspective(float fov, float aspect, float near, float far);
 t_env	*get_env(void);
 t_obj 	*parse_obj(char *pth);
 t_vert	*lst_vertnew(float x, float y, float z);
@@ -164,5 +177,7 @@ t_faces *lst_facenew(uint16_t a, uint16_t b, uint16_t c, uint16_t d);
 void 	lst_facesdel(t_faces **list);
 void	vertice_add(t_vert *vert, t_obj *ret, t_vert **last_vert);
 void	face_add(t_faces *face, t_obj *ret, t_faces **last_face);
+float	*delist_verts(t_vert *start);
+int		*delist_faces(t_faces *start);
 
 #endif

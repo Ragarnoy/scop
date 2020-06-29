@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 12:30:37 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/23 12:18:34 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/29 09:41:09 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,45 @@ float 	*delist_verts(t_vert *start)
 		i++;
 	}
 	ret = ft_memalloc(sizeof(float) * (i * 3));
+	tmp = start;
+	while (i > 0)
+	{
+		ret[i * 3 + 0] = tmp->v.x;
+		ret[i * 3 + 1] = tmp->v.y;
+		ret[i * 3 + 2] = tmp->v.z;
+		free(tmp);
+		tmp = tmp->next;
+		i--;
+	}
+	//TODO Free
+	return (ret);
+}
+
+int 	*delist_faces(t_faces *start)
+{
+	int		i;
+	int 	*ret;
+	t_faces	*tmp;
+
+	i = 0;
+	tmp = start;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	ret = ft_memalloc(sizeof(int) * (i * 4));
+	tmp = start;
+	while (i > 0)
+	{
+		ret[i * 3 + 0] = tmp->uv.x;
+		ret[i * 3 + 1] = tmp->uv.y;
+		ret[i * 3 + 2] = tmp->uv.z;
+		ret[i * 3 + 3] = tmp->uv.w;
+		free(tmp);
+		tmp = tmp->next;
+		i--;
+	}
+	//TODO Free
+	return (ret);
 }

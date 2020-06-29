@@ -6,11 +6,12 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 15:52:10 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/24 15:42:28 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/29 17:00:34 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/scop.h"
+#include <stdio.h>
 
 t_mat4 		m4_transpose(t_mat4 m)
 {
@@ -59,7 +60,7 @@ t_mat4 		m4_rotate_axis(t_mat4 m, t_axis axis, float angle)
 	t_mat4	r;
 	float	theta;
 
-	m4_set(&r, (float)0x7FFFFFFF);
+	m4_set(&r, (float)IDENTITY);
 	theta = angle * (float)(M_PI / 180);
 	if (axis == AXIS_X)
 	{
@@ -77,4 +78,19 @@ t_mat4 		m4_rotate_axis(t_mat4 m, t_axis axis, float angle)
 		m = m4_mul(m, r);
 	}
 	return (m);
+}
+
+t_mat4 		m4_translate(t_mat4 mat, t_fvec3 vec)
+{
+	t_mat4 ret;
+
+	ret = m4_copy(&ret, mat);
+	ret.m[3] = mat.m[0] * vec.x + mat.m[4] * vec.y + mat.m[8] * vec.z + mat.m[12];
+	ret.m[7] = mat.m[1] * vec.x + mat.m[5] * vec.y + mat.m[9] * vec.z + mat.m[13];
+	ret.m[11] = mat.m[2] * vec.x + mat.m[6] * vec.y + mat.m[10] * vec.z + mat.m[14];
+	ret.m[15] = 1.0f;
+//	printf("\nMatrix print####\n%f  %f  %f  %f\n%f  %f  %f  %f\n%f  %f  %f  %f\n%f  %f  %f  %f\n################",
+//		   mat.m[0], mat.m[1], mat.m[2], mat.m[3], mat.m[4], mat.m[5], mat.m[6], mat.m[7],
+//		   mat.m[8], mat.m[9], mat.m[10], mat.m[11], mat.m[12], mat.m[13], mat.m[14], mat.m[15]);
+	return (ret);
 }

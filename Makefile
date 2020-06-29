@@ -1,24 +1,26 @@
 NAME = scop
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g3
 CPPFLAGS = -I ./include `pkg-config --cflags glfw3`
 INC_PATH = include/
 OBJ_PATH = obj
 SRC_PATH = src
 SRC_NAME = main.c \
-	   glad.c \
-	   init.c \
 	   err.c \
-	   glLoader.c \
+	   glad.c \
+	   view.c \
+	   init.c \
 	   utils.c \
+	   glLoader.c \
+	   lst_util.c \
 	   obj_parsing.c \
-	   libm/vec3_arithmetics.c \
-	   libm/vec3_algebra.c \
 	   libm/vec3_self.c \
-	   libm/mat4_algebra.c \
 	   libm/mat4_self.c \
+	   libm/vec3_algebra.c \
+	   libm/mat4_algebra.c \
 	   libm/mat4_arithmetics.c \
-	   lst_util.c
+	   libm/vec3_arithmetics.c \
+	   libm/angle_utils.c
 
 OBJ_NAME = $(SRC_NAME:c=o)
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))

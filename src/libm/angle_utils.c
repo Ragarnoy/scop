@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_self.c                                        :+:      :+:    :+:   */
+/*   angle_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/23 16:10:57 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/29 15:59:17 by tlernoul         ###   ########.fr       */
+/*   Created: 2020/06/29 11:18:05 by tlernoul          #+#    #+#             */
+/*   Updated: 2020/06/29 11:22:25 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/scop.h"
 
-void		m4_set(t_mat4 *m, float f)
+float 	deg_to_rad(float deg)
 {
-	int i;
-
-	i = -1;
-	while (++i < 16)
-	{
-		if (f == (float)IDENTITY)
-			m->m[i] = (i % 5 == 0 ? 1 : 0);
-		else
-			m->m[i] = f;
-	}
+	return (deg / 180 * (float)M_PI);
 }
 
-t_mat4	 	m4_copy(t_mat4 *in, t_mat4 to_copy)
+float 	rad_to_deg(float deg)
 {
-	int i;
-
-	i = -1;
-	while (++i < 16)
-		in->m[i] = to_copy.m[i];
-	return (*in);
+	return (deg / (float)M_PI * 180);
 }
