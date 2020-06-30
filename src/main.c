@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 13:50:39 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/29 16:42:10 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/30 12:11:13 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,13 @@ static int	display_loop(t_env *env)
 	m4_set(&projection, IDENTITY);
 	glUseProgram(SHADERPROGRAM);
 	set_uniform_i("texture1", 0);
+	glEnable(GL_DEPTH_TEST);
 	while (!glfwWindowShouldClose(env->window))
 	{
 		timeValue = glfwGetTime();
 		colorShift = (sin(timeValue) / 2.0f);
-		model = m4_rotate_axis(model, AXIS_X, 0.8f);
-		view = m4_translate(view, (t_fvec3){0.0f, 0.0f, -3.0f});
+		model = m4_rotate(model, 0.01f, (t_fvec3) {0.0f, 0.3f, 0.0f});
+		view = m4_translate(view, (t_fvec3){0.0f, 0.0f, -5.5f});
 		projection = perspective(deg_to_rad(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
 
 		printf("\nMatrix print M##\n%f  %f  %f  %f\n%f  %f  %f  %f\n%f  %f  %f  %f\n%f  %f  %f  %f\n################",

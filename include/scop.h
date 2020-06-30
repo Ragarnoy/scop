@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/29 15:41:19 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/30 12:03:04 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ t_mat4	m4_mul(t_mat4 a, t_mat4 b);
 t_mat4	m4_scale(t_mat4 m, float f);
 t_mat4 	m4_copy(t_mat4 *in, t_mat4 to_copy);
 t_mat4	m4_rotate_axis(t_mat4 m, t_axis axis, float angle);
+t_mat4	m4_rotate(t_mat4 mat, float angle, t_fvec3 ax);
 t_mat4	m4_translate(t_mat4 mat, t_fvec3 vec);
 void	m4_set(t_mat4 *m, float f);
 
