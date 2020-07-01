@@ -6,19 +6,20 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/30 12:03:04 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/07/01 18:30:08 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef __APPLE__
-# define APPLE 1
-# else
-# define APPLE 0
-#endif
 #ifndef SCOP_H
 # define SCOP_H
+# ifdef __APPLE__
+#  define APPLE 1
+#  else
+#  define APPLE 0
+# endif
 # define VBO env->vbo
 # define VAO env->vao
+# define EBO env->ebo
 # define SHADERPROGRAM env->shProgram
 # define IDENTITY 0x7FFFFFFF
 # include <glad/glad.h>
@@ -74,14 +75,6 @@ typedef struct 		s_vert
 	struct s_vert	*next;
 }					t_vert;
 
-typedef struct		s_camera
-{
-	t_fvec3			cam_pos;
-	t_fvec3 		cam_up;
-	t_fvec3 		cam_front;
-	t_fvec3 		cam_right;
-}					t_camera;
-
 typedef struct 		s_faces
 {
 	t_uvec4 		uv;
@@ -91,14 +84,35 @@ typedef struct 		s_faces
 typedef struct 		s_obj
 {
 	t_vert 			*vertices;
+	size_t 			vsize;
 	t_faces			*indices;
+	size_t 			isize;
+	t_fvec3			min;
+	t_fvec3			max;
 }					t_obj;
+
+typedef struct 		s_mvp
+{
+	t_mat4 			model;
+	t_mat4 			proj;
+	t_mat4 			view;
+}					t_mvp;
+
+typedef struct 		s_uniform
+{
+	int 			mdl;
+	int 			prj;
+	int 			vw;
+	int 			greymode;
+	int 			texmode;
+	int 			colmode;
+}					t_uniform;
 
 typedef struct 		s_env
 {
 	t_obj			*obj;
-	t_camera		cam;
 	GLFWwindow      *window;
+	t_mvp			mvp;
 	unsigned int    vbo;
     unsigned int    vao;
 	unsigned int    ebo;
@@ -152,33 +166,35 @@ float 	rad_to_deg(float deg);
  * SCOP
  */
 
-int	    shutdown(int err);
-int	    setup_gl(t_env *env);
-int     setup_shader(t_env *env);
-int     setup_vertex(t_env *env);
-int		setup_texture(t_env *env);
-int	    load_vert(char *pth);
-int	    load_frag(char *pth);
-void 	set_uniform_4f(char *uniform, float r, float g, float b, float a);
-void 	set_uniform_m4(char *uniform, unsigned int size, int transpose, const float *mat);
-void 	set_uniform_3f(char *uniform, float r, float g, float b);
-void 	set_uniform_i(char *uniform, int a);
-void	printAndTerminate(char *str);
-void	framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void	processInput(GLFWwindow *win);
-void	glShaderLogError(int shader, int shaderType);
-void	glProgramLogError(int program);
-t_mat4	look_at(t_fvec3 pos, t_fvec3 center, t_fvec3 up);
-t_mat4 	perspective(float fov, float aspect, float near, float far);
-t_env	*get_env(void);
-t_obj 	*parse_obj(char *pth);
-t_vert	*lst_vertnew(float x, float y, float z);
-void	lst_vertdel(t_vert **list);
-t_faces *lst_facenew(uint16_t a, uint16_t b, uint16_t c, uint16_t d);
-void 	lst_facesdel(t_faces **list);
-void	vertice_add(t_vert *vert, t_obj *ret, t_vert **last_vert);
-void	face_add(t_faces *face, t_obj *ret, t_faces **last_face);
-float	*delist_verts(t_vert *start);
-int		*delist_faces(t_faces *start);
+int				shutdown(int err);
+int				setup_gl(t_env *env);
+int				setup_shader(t_env *env);
+int				setup_vertex(t_env *env);
+int				setup_texture(t_env *env);
+int				load_vert(char *pth);
+int				load_frag(char *pth);
+void 			set_uniform_4f(char *uniform, float r, float g, float b, float a);
+void 			set_uniform_m4(char *uniform, unsigned int size, int transpose, const float *mat);
+void 			set_uniform_3f(char *uniform, float r, float g, float b);
+void 			set_uniform_i(char *uniform, int a);
+void			printAndTerminate(char *str);
+void			framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void			processInput(GLFWwindow *win);
+void			glShaderLogError(int shader, int shaderType);
+void			glProgramLogError(int program);
+t_mat4			look_at(t_fvec3 pos, t_fvec3 center, t_fvec3 up);
+t_mat4		 	perspective(float fov, float aspect, float near, float far);
+t_env			*get_env(void);
+t_obj 			*parse_obj(char *pth);
+t_vert			*lst_vertnew(float x, float y, float z);
+void			lst_vertdel(t_vert **list);
+t_faces			*lst_facenew(uint16_t a, uint16_t b, uint16_t c, uint16_t d);
+void 			lst_facesdel(t_faces **list);
+void			vertice_add(t_vert *vert, t_obj *ret, t_vert **last_vert);
+void			face_add(t_faces *face, t_obj *ret, t_faces **last_face);
+float			*delist_verts(t_vert *start, size_t size);
+size_t 			count_verts(t_vert *verts);
+size_t			count_faces(t_faces *faces);
+unsigned int	*delist_faces(t_faces *start, size_t size, t_env *env);
 
 #endif

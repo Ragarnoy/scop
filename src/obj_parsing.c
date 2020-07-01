@@ -6,16 +6,50 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 13:26:42 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/23 14:41:13 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/07/01 18:18:25 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/scop.h"
 #include <fcntl.h>
-#include <stdio.h>
 
+void		set_max(t_obj *obj, t_vert *tmp)
+{
+	t_fvec3 val;
 
-t_faces	*ret_faces(char *str)
+	val = (t_fvec3){0.0f, 0.0f, 0.0f};
+	while (tmp)
+	{
+		if (tmp->v.x > val.x)
+			val.x = tmp->v.x;
+		if (tmp->v.y > val.y)
+			val.y = tmp->v.y;
+		if (tmp->v.z > val.z)
+			val.z = tmp->v.z;
+		tmp = tmp->next;
+	}
+	obj->max = val;
+}
+
+void		set_min(t_obj *obj, t_vert *tmp)
+{
+	t_fvec3 val;
+
+	val = (t_fvec3){0.0f, 0.0f, 0.0f};
+	while (tmp)
+	{
+		if (tmp->v.x < val.x)
+			val.x = tmp->v.x;
+		if (tmp->v.y < val.y)
+			val.y = tmp->v.y;
+		if (tmp->v.z < val.z)
+			val.z = tmp->v.z;
+		tmp = tmp->next;
+	}
+	obj->min = val;
+}
+
+t_faces		*ret_faces(char *str)
 {
 	int		i;
 	uint8_t spaces;
@@ -81,13 +115,13 @@ t_obj	*fill_list(int fd, t_obj *ret)
 	last_curf = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
-		if (line[0] == 'v')
+		if (line[0] == 'v' && line[1] == ' ')
 		{
 			curv = ret_vertices(line);
 //			printf("%f %f %f\n", curv->v.x, curv->v.y, curv->v.z);
 			vertice_add(curv, ret, &last_vert);
 		}
-		else if (line[0] == 'f')
+		else if (line[0] == 'f' && line[1] == ' ')
 		{
 			curf = ret_faces(line);
 			face_add(curf, ret, &last_curf);
@@ -102,11 +136,23 @@ t_obj 	*parse_obj(char *pth)
 	t_obj 	*obj;
 
 	fd = 0;
+	obj = NULL;
 	if (ft_strlen(pth) >= 5 && !ft_strstr(ft_strsub(pth,
 			ft_strlen(pth) - 4, 4), ".obj"))
-		return NULL;
-	fd = open(pth, fd, O_RDONLY);
+		return (NULL);
+	//TODO CHECK IF EXIST RETARD
+	if ((fd = open(pth, O_RDONLY)) == -1)
+		return (NULL);
 	if (!(obj = ft_memalloc(sizeof(t_obj))))
 		return(NULL);
-	return (fill_list(fd, obj));
+	obj->isize = 0;
+	obj->vsize = 0;
+	obj = fill_list(fd, obj);
+	if (obj->vertices)
+		obj->vsize = count_verts(obj->vertices);
+	if (obj->indices)
+		obj->isize = count_faces(obj->indices);
+	set_max(obj, obj->vertices);
+	set_min(obj, obj->vertices);
+	return (obj);
 }

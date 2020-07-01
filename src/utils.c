@@ -12,6 +12,7 @@
 
 #include "../include/scop.h"
 
+// TODO getuniformlocation should only be done once
 void 	set_uniform_4f(char *uniform, float r, float g, float b, float a)
 {
 	int 	id;

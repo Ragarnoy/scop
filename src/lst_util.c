@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 12:30:37 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/29 09:41:09 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/07/01 15:52:23 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,59 +84,101 @@ void	face_add(t_faces *face, t_obj *ret, t_faces **last_face)
 	*last_face = face;
 }
 
-float 	*delist_verts(t_vert *start)
+float 	*delist_verts(t_vert *start, size_t size)
 {
-	int		i;
+	size_t 	i;
 	float 	*ret;
 	t_vert	*tmp;
 
 	i = 0;
+	ret = ft_memalloc(sizeof(float) * (size * 3));
 	tmp = start;
-	while (tmp)
-	{
-		tmp = tmp->next;
-		i++;
-	}
-	ret = ft_memalloc(sizeof(float) * (i * 3));
-	tmp = start;
-	while (i > 0)
+	while (i < size)
 	{
 		ret[i * 3 + 0] = tmp->v.x;
 		ret[i * 3 + 1] = tmp->v.y;
 		ret[i * 3 + 2] = tmp->v.z;
+		printf("VERT %zu: %f %f %f\n", i, ret[i * 3 + 0], ret[i * 3 + 1], ret[i * 3 + 2]);
 		free(tmp);
 		tmp = tmp->next;
-		i--;
+		i++;
 	}
 	//TODO Free
 	return (ret);
 }
 
-int 	*delist_faces(t_faces *start)
+unsigned int 	*delist_faces(t_faces *start, size_t size, t_env *env)
 {
-	int		i;
-	int 	*ret;
-	t_faces	*tmp;
+	size_t			i;
+	unsigned int	*ret;
+	t_faces			*tmp;
+	size_t 			isize;
 
+	isize = 0;
 	i = 0;
+	ret = ft_memalloc(sizeof(unsigned int) * (size * 5));
+	ft_bzero(ret, sizeof(unsigned int) * (size * 4));
+	printf("memsize = %zu\n", size * 4);
 	tmp = start;
 	while (tmp)
 	{
+		ret[i * 3 + 0] = tmp->uv.x - 1;
+		ret[i * 3 + 1] = tmp->uv.y - 1;
+		ret[i * 3 + 2] = tmp->uv.z - 1;
+		isize += 3;
+		if (tmp->uv.w != 0)
+		{
+			isize += 3;
+			i++;
+			ret[i * 3 + 0] = tmp->uv.z - 1;
+			ret[i * 3 + 1] = tmp->uv.w - 1;
+			ret[i * 3 + 2] = tmp->uv.x - 1;
+			printf("FACE4 %zu: %u %u %u\n        %u %u %u\n", (i-1), ret[(i-1) * 3 + 0],
+					ret[(i-1) * 3 + 1], ret[(i-1) * 3 + 2], ret[(i-1) * 3 + 3], ret[(i-1) * 3 + 4], ret[(i-1) * 3 + 5]);
+		} else {
+			printf("FACE %zu: %u %u %u\n", i, ret[i * 3 + 0], ret[i * 3 + 1], ret[i * 3 + 2]);}
+//		free(tmp);
 		tmp = tmp->next;
 		i++;
 	}
-	ret = ft_memalloc(sizeof(int) * (i * 4));
-	tmp = start;
-	while (i > 0)
-	{
-		ret[i * 3 + 0] = tmp->uv.x;
-		ret[i * 3 + 1] = tmp->uv.y;
-		ret[i * 3 + 2] = tmp->uv.z;
-		ret[i * 3 + 3] = tmp->uv.w;
-		free(tmp);
-		tmp = tmp->next;
-		i--;
-	}
+	printf("%zu\n", isize);
 	//TODO Free
+	env->obj->isize = isize;
+	for (unsigned int j = 0; j < isize; j++)
+	{
+		ft_putnbr(ret[j]);
+		ft_putchar(' ');
+	}
+	ft_putendl("");
 	return (ret);
+}
+
+size_t 	count_verts(t_vert *verts)
+{
+	size_t	size;
+	t_vert	*tmp;
+
+	size = 0;
+	tmp = verts;
+	while (tmp)
+	{
+		size++;
+		tmp = tmp->next;
+	}
+	return (size);
+}
+
+size_t 	count_faces(t_faces *faces)
+{
+	size_t	size;
+	t_faces	*tmp;
+
+	size = 0;
+	tmp = faces;
+	while (tmp)
+	{
+		size++;
+		tmp = tmp->next;
+	}
+	return (size);
 }

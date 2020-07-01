@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-double		decimal(const char *str, int i, double ret)
+float		decimal(const char *str, int i, float ret)
 {
 	unsigned long 	dec;
 
@@ -21,15 +21,15 @@ double		decimal(const char *str, int i, double ret)
 	while (ft_isdigit(str[i]))
 	{
 		dec *= 10;
-		ret += (double)(str[i++] - '0') / (double)dec;
+		ret += (float)(str[i++] - '0') / (float)dec;
 	}
 	return (ret);
 }
 
-double		ft_atof(const char *str)
+float		ft_atof(const char *str)
 {
-	double			ret;
-	double			sign;
+	float			ret;
+	float			sign;
 	int				i;
 
 	i = 0;
@@ -46,7 +46,7 @@ double		ft_atof(const char *str)
 	while (ft_isdigit(str[i]))
 	{
 		ret *= 10;
-		ret += (double)(str[i++] - '0');
+		ret += (float)(str[i++] - '0');
 	}
 	if (str[i] == '.')
 		ret = decimal(str, i, ret);

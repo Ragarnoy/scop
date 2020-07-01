@@ -6,7 +6,7 @@
 /*   By: tlernoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 15:40:27 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/23 12:18:34 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/06/30 15:07:57 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int					ft_hsl_to_rgb(t_hsl hsl);
 
 int					ft_hsv_to_rgb(t_hsv hsv);
 
-double 				ft_atof(const char *str);
+float				ft_atof(const char *str);
 
 int					ft_atoi(const char *str);
 

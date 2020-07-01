@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 16:32:59 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/29 14:04:20 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/07/01 17:42:05 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	setup_gl(t_env *env)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_SAMPLES, 4);
 	if (APPLE)
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	env->window = glfwCreateWindow(800, 600, "Ouais_ok", NULL, NULL);
@@ -38,7 +39,7 @@ int setup_texture(t_env *env)
 
 	glGenTextures(1, &env->texture);
 	glBindTexture(GL_TEXTURE_2D, env->texture);
-	if (!(bmp = ft_parse_bmp("/Users/tlernoul/Downloads/wall.bmp")))
+	if (!(bmp = ft_parse_bmp("textures/wall.bmp")))
 	{
 		return (0);
 	}
@@ -59,67 +60,32 @@ int	setup_vertex(t_env *env)
 {
     // TODO ideally pass shapes here maybe?
 
-	float vertices[] = {
-			-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-			0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-			0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-			0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-			-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-			-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-
-			-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-			0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-			0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-			0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-			-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-			-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-
-			-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-			-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-			-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-			-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-			-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-			-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-			0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-			0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-			0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-			0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-			0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-			0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-			-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-			0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-			0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-			0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-			-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-			-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-
-			-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-			0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-			0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-			0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-			-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-			-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
-	};
+	float			*vertices;
+	unsigned int	*indices;
+	vertices = delist_verts(env->obj->vertices, env->obj->vsize);
+	indices = delist_faces(env->obj->indices, env->obj->isize, env);
 
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
 
 	glBindVertexArray(VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, (env->obj->vsize * 3) * sizeof(float), vertices, GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (env->obj->isize) * sizeof(unsigned int), indices, GL_STATIC_DRAW);
+
 	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(1);
+//	glEnableVertexAttribArray(1);
+//	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(3 * sizeof(float)));
 
 //	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 //	glBindBuffer(GL_ARRAY_BUFFER, 0);
-//	glBindVertexArray(0);
+	glBindVertexArray(0);
 	return (1);
 }
 
@@ -132,12 +98,12 @@ int	setup_shader(t_env *env)
     vertShader = load_vert("src/shaders/camera.vert");
 	fragShader = load_frag("src/shaders/camera.frag");
 	env->shProgram = glCreateProgram();
-	glAttachShader(env->shProgram, vertShader);
-	glAttachShader(env->shProgram, fragShader);
-	glLinkProgram(env->shProgram);
-	glGetProgramiv(env->shProgram, GL_LINK_STATUS, &success);
+	glAttachShader(SHADERPROGRAM, vertShader);
+	glAttachShader(SHADERPROGRAM, fragShader);
+	glLinkProgram(SHADERPROGRAM);
+	glGetProgramiv(SHADERPROGRAM, GL_LINK_STATUS, &success);
 	if (!success)
-		glProgramLogError(env->shProgram);
+		glProgramLogError(SHADERPROGRAM);
 	glDeleteShader(vertShader);
 	glDeleteShader(fragShader);
 	return (1);
@@ -151,6 +117,9 @@ t_env	*get_env(void)
 		return (env);
 	if (!(env = ft_memalloc(sizeof(t_env))))
 		exit(-1);
+	m4_set(&env->mvp.model, IDENTITY);
+	m4_set(&env->mvp.proj, IDENTITY);
+	m4_set(&env->mvp.view, IDENTITY);
 	return (env);
 }
 
