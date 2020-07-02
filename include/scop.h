@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/07/01 18:30:08 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/07/02 17:07:45 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define VBO env->vbo
 # define VAO env->vao
 # define EBO env->ebo
-# define SHADERPROGRAM env->shProgram
+# define SHADERPROGRAM env->shader
 # define IDENTITY 0x7FFFFFFF
 # include <glad/glad.h>
 # include <math.h>
@@ -38,12 +38,12 @@ typedef enum 		e_axis
 
 typedef struct 		s_mat4
 {
-	float 			m[4 * 4];
+	GLfloat			m[4 * 4];
 }					t_mat4;
 
 typedef struct 		s_mat3
 {
-	float 			m[3 * 3];
+	GLfloat			m[3 * 3];
 }					t_mat3;
 
 typedef struct 		s_fvec4
@@ -100,12 +100,12 @@ typedef struct 		s_mvp
 
 typedef struct 		s_uniform
 {
-	int 			mdl;
-	int 			prj;
-	int 			vw;
-	int 			greymode;
-	int 			texmode;
-	int 			colmode;
+	GLint			model;
+	GLint			proj;
+	GLint			view;
+	GLint			vtxcol;
+	GLint			colmode;
+	GLint			lerp;
 }					t_uniform;
 
 typedef struct 		s_env
@@ -113,11 +113,16 @@ typedef struct 		s_env
 	t_obj			*obj;
 	GLFWwindow      *window;
 	t_mvp			mvp;
-	unsigned int    vbo;
-    unsigned int    vao;
-	unsigned int    ebo;
-	unsigned int 	texture;
-	int             shProgram;
+	t_uniform		uni;
+	t_fvec3			cam;
+	t_fvec3			rot;
+	float 			rotspeed;
+	GLuint			vbo;
+    GLuint			vao;
+	GLuint			ebo;
+	GLuint			texture;
+	GLint			shader;
+	GLfloat			lerp;
 }			        t_env;
 
 /*
@@ -173,13 +178,12 @@ int				setup_vertex(t_env *env);
 int				setup_texture(t_env *env);
 int				load_vert(char *pth);
 int				load_frag(char *pth);
-void 			set_uniform_4f(char *uniform, float r, float g, float b, float a);
-void 			set_uniform_m4(char *uniform, unsigned int size, int transpose, const float *mat);
-void 			set_uniform_3f(char *uniform, float r, float g, float b);
-void 			set_uniform_i(char *uniform, int a);
+void			movement(t_env *env);
+void			set_mvp(t_env *env);
+void			set_color(t_env *env);
 void			printAndTerminate(char *str);
 void			framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void			processInput(GLFWwindow *win);
+void			processInput(t_env *env);
 void			glShaderLogError(int shader, int shaderType);
 void			glProgramLogError(int program);
 t_mat4			look_at(t_fvec3 pos, t_fvec3 center, t_fvec3 up);

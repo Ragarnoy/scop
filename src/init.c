@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 16:32:59 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/07/01 17:42:05 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/07/02 17:08:02 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,9 @@ int setup_texture(t_env *env)
 
 int	setup_vertex(t_env *env)
 {
-    // TODO ideally pass shapes here maybe?
-
 	float			*vertices;
 	unsigned int	*indices;
+
 	vertices = delist_verts(env->obj->vertices, env->obj->vsize);
 	indices = delist_faces(env->obj->indices, env->obj->isize, env);
 
@@ -80,12 +79,8 @@ int	setup_vertex(t_env *env)
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
-//	glEnableVertexAttribArray(1);
-//	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(3 * sizeof(float)));
-
-//	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-//	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(3 * sizeof(float)));
 	return (1);
 }
 
@@ -97,7 +92,7 @@ int	setup_shader(t_env *env)
 
     vertShader = load_vert("src/shaders/camera.vert");
 	fragShader = load_frag("src/shaders/camera.frag");
-	env->shProgram = glCreateProgram();
+	env->shader = glCreateProgram();
 	glAttachShader(SHADERPROGRAM, vertShader);
 	glAttachShader(SHADERPROGRAM, fragShader);
 	glLinkProgram(SHADERPROGRAM);
@@ -106,6 +101,12 @@ int	setup_shader(t_env *env)
 		glProgramLogError(SHADERPROGRAM);
 	glDeleteShader(vertShader);
 	glDeleteShader(fragShader);
+	env->uni.model = glGetUniformLocation(SHADERPROGRAM, "model");
+	env->uni.proj = glGetUniformLocation(SHADERPROGRAM, "projection");
+	env->uni.view = glGetUniformLocation(SHADERPROGRAM, "view");
+	env->uni.vtxcol = glGetUniformLocation(SHADERPROGRAM, "vertexColor");
+	env->uni.colmode = glGetUniformLocation(SHADERPROGRAM, "mode");
+	env->uni.lerp = glGetUniformLocation(SHADERPROGRAM, "lerp");
 	return (1);
 }
 
@@ -120,6 +121,10 @@ t_env	*get_env(void)
 	m4_set(&env->mvp.model, IDENTITY);
 	m4_set(&env->mvp.proj, IDENTITY);
 	m4_set(&env->mvp.view, IDENTITY);
+	env->cam = (t_fvec3){0.0f, 0.0f, -6.5f};
+	env->rot = (t_fvec3) {0.0f, 0.3f, 0.0f};
+	env->rotspeed = 0.01f;
+	env->lerp = 0.0f;
 	return (env);
 }
 

@@ -1,13 +1,41 @@
 #version 410 core
+#define COLOR 0
+#define COLORSHIFT 1
+#define GREY 2
+#define TEX 3
 out vec4    FragColor;
 
-in vec2     TexCoord;
-smooth in vec4 face_col;
+in vec2         TexCoord;
+flat in vec4    flat_col;
+smooth in vec4  smooth_col;
 
-uniform vec4 vertexColor;
+uniform float       lerp;
+uniform int         mode;
+uniform vec4        vertexColor;
 uniform sampler2D   texture1;
 
-void main()
+vec4    get_color()
 {
-	FragColor = vertexColor + face_col;
+	vec4 color = FragColor;
+	float grey;
+
+	if (mode == COLOR)
+		color = smooth_col;
+	else if (mode == COLORSHIFT)
+		color = smooth_col + vertexColor;
+	else if (mode == GREY)
+	{
+		color = flat_col;
+		grey = (0.2125 * color.x + 0.7154 * color.y + 0.0721 * color.z) / 1.4f;
+//		color = vec4(grey, grey, grey, 1.0f);
+		color = mix(color, vec4(grey, grey, grey, 1.0f), lerp);
+	}
+	else if (mode == TEX)
+		color = texture(texture1, TexCoord);
+	return (color);
+}
+
+void    main()
+{
+	FragColor = get_color();
 }

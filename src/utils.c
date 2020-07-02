@@ -6,49 +6,68 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 17:39:56 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/06/29 14:09:58 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/07/02 17:12:34 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/scop.h"
 
-// TODO getuniformlocation should only be done once
-void 	set_uniform_4f(char *uniform, float r, float g, float b, float a)
+void		movement(t_env *env)
 {
-	int 	id;
-	t_env	*env;
-
-	env = get_env();
-	id = glGetUniformLocation(env->shProgram, uniform);
-	glUniform4f(id, r, g, b, a);
+	if (env->cam.z < 10.0f && glfwGetKey(env->window, GLFW_KEY_PAGE_UP)
+														== GLFW_PRESS)
+		env->cam.z += 0.1f;
+	else if (env->cam.z > -100.f && glfwGetKey(env->window, GLFW_KEY_PAGE_DOWN)
+														== GLFW_PRESS)
+		env->cam.z -= 0.1f;
+	if (glfwGetKey(env->window, GLFW_KEY_UP) == GLFW_PRESS)
+		env->cam.y += 0.01f;
+	if (glfwGetKey(env->window, GLFW_KEY_DOWN) == GLFW_PRESS)
+		env->cam.y -= 0.01f;
+	if (glfwGetKey(env->window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+		env->cam.x -= 0.01f;
+	if (glfwGetKey(env->window, GLFW_KEY_LEFT) == GLFW_PRESS)
+		env->cam.x += 0.01f;
+	else if (env->rotspeed < 10.0f && glfwGetKey(env->window,
+								GLFW_KEY_KP_ADD) == GLFW_PRESS)
+		env->rotspeed += 0.001f;
+	else if (env->rotspeed > 0.000001f && glfwGetKey(env->window,
+								GLFW_KEY_KP_SUBTRACT) == GLFW_PRESS)
+		env->rotspeed -= 0.001f;
 }
 
-void 	set_uniform_3f(char *uniform, float r, float g, float b)
+void		framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
-	int 	id;
-	t_env	*env;
-
-	env = get_env();
-	id = glGetUniformLocation(env->shProgram, uniform);
-	glUniform3f(id, r, g, b);
+	(void)window;
+	glViewport(0, 0, width, height);
 }
 
-void 	set_uniform_i(char *uniform, int a)
+void		set_mvp(t_env *env)
 {
-	int 	id;
-	t_env	*env;
-
-	env = get_env();
-	id = glGetUniformLocation(env->shProgram, uniform);
-	glUniform1i(id, a);
+	env->mvp.model = m4_rotate(env->mvp.model, env->rotspeed, env->rot);
+	env->mvp.view = m4_translate(env->mvp.view, env->cam);
+	env->mvp.proj = perspective(deg_to_rad(45.0f),
+			800.0f / 600.0f, 0.1f, 100.0f);
+	glUniformMatrix4fv(env->uni.model, 1, GL_FALSE,
+			(const float *)&env->mvp.model.m);
+	glUniformMatrix4fv(env->uni.proj, 1, GL_FALSE,
+			(const float *)&env->mvp.proj.m);
+	glUniformMatrix4fv(env->uni.view, 1, GL_FALSE,
+			(const float *)&env->mvp.view.m);
 }
 
-void 	set_uniform_m4(char *uniform, unsigned int size, int transpose, const float *mat)
+void		set_color(t_env *env)
 {
-	int 	id;
-	t_env	*env;
+	float			time_value;
+	float			color_shift;
+	t_fvec3			rgb;
 
-	env = get_env();
-	id = glGetUniformLocation(env->shProgram, uniform);
-	glUniformMatrix4fv(id, size, transpose, mat);
+	time_value = glfwGetTime();
+	color_shift = (sin(time_value) / 2.0f);
+	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	rgb.x = color_shift + 0.2f;
+	rgb.y = color_shift + 0.1f;
+	rgb.z = color_shift + 0.2f;
+	glUniform4f(env->uni.vtxcol, rgb.x, rgb.y, rgb.z, 1.0f);
 }

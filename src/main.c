@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 13:50:39 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/07/01 18:35:31 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/07/02 16:42:10 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,30 @@ void		debug_mats(t_mat4 model, t_mat4 view, t_mat4 projection)
 		   projection.m[8], projection.m[9], projection.m[10], projection.m[11], projection.m[12], projection.m[13], projection.m[14], projection.m[15]);
 }
 
-void		framebuffer_size_callback(GLFWwindow* window, int width, int height)
+void		processInput(t_env *env)
 {
-	(void)window;
-	glViewport(0, 0, width, height);
+	if (glfwGetKey(env->window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		glfwSetWindowShouldClose(env->window, 1);
+	else if (glfwGetKey(env->window, GLFW_KEY_KP_0) == GLFW_PRESS)
+		glUniform1i(env->uni.colmode, 0);
+	else if (glfwGetKey(env->window, GLFW_KEY_KP_1) == GLFW_PRESS)
+		glUniform1i(env->uni.colmode, 1);
+	else if (glfwGetKey(env->window, GLFW_KEY_KP_2) == GLFW_PRESS)
+		glUniform1i(env->uni.colmode, 2);
+	else if (glfwGetKey(env->window, GLFW_KEY_KP_3) == GLFW_PRESS)
+		glUniform1i(env->uni.colmode, 3);
+	else if (glfwGetKey(env->window, GLFW_KEY_KP_EQUAL) == GLFW_PRESS)
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	else if (glfwGetKey(env->window, GLFW_KEY_KP_DIVIDE) == GLFW_PRESS)
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	else
+		movement(env);
 }
 
-void		processInput(GLFWwindow *win)
-{
-	if (glfwGetKey(win, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-		glfwSetWindowShouldClose(win, 1);
-}
 
 static int	display_loop(t_env *env)
 {
 	int				retCode;
-	float			timeValue;
-	float			colorShift;
-	float			_greenValue;
-	float			_redValue;
-	float			_blueValue;
 	unsigned int 	error;
 
 	error = 0;
@@ -52,42 +56,22 @@ static int	display_loop(t_env *env)
 	glUseProgram(SHADERPROGRAM);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_MULTISAMPLE);
-	env->mvp.model = m4_translate(env->mvp.model, (t_fvec3){-(env->obj->max.x + env->obj->min.x) / 2.0f,
-									   -(env->obj->max.y + env->obj->min.y) / 2.0f, -(env->obj->max.z + env->obj->min.z) / 2.0f});
+	glad_glUniform1f(env->uni.lerp, 0.0f);
 	while (!glfwWindowShouldClose(env->window))
 	{
-		timeValue = glfwGetTime();
-		colorShift = (sin(timeValue) / 2.0f);
-		env->mvp.model = m4_rotate(env->mvp.model, 0.01f, (t_fvec3) {0.0f, 0.3f, 0.0f});
-		env->mvp.view = m4_translate(env->mvp.view, (t_fvec3){0.0f, -0.5f, -6.5f});
-		env->mvp.proj = perspective(deg_to_rad(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
-
-		processInput(env->window);
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		set_uniform_m4("model", 1, GL_FALSE, (const float *)&env->mvp.model.m);
-		set_uniform_m4("view", 1, GL_FALSE, (const float *)&env->mvp.view.m);
-		set_uniform_m4("projection", 1, GL_FALSE, (const float *)&env->mvp.proj.m);
-		_greenValue = colorShift + 0.1f;
-		_redValue = colorShift + 0.2f;
-		_blueValue = colorShift + 0.2f;
-		set_uniform_4f("vertexColor", _redValue, _greenValue, _blueValue, 1.0f);
+		set_mvp(env);
+		processInput(env);
+		set_color(env);
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, env->obj->isize, GL_UNSIGNED_INT, 0);
-
-//		glBindTexture(GL_TEXTURE_2D, env->texture);
-		glUseProgram(SHADERPROGRAM);
-
         glfwSwapBuffers(env->window);
         glfwPollEvents();
 		if ((error = glGetError()) != GL_NO_ERROR)
 			printf("####%d####\n", error);
 	}
-
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
-	glDeleteProgram(env->shProgram);
+	glDeleteProgram(env->shader);
 	return (retCode);
 }
 
@@ -108,6 +92,10 @@ int			main(int argc, char *argv[])
     	return (-1);
     if (!setup_texture(env))
 		return (-1);
+	env->mvp.model = m4_translate(env->mvp.model,
+			(t_fvec3){-(env->obj->max.x + env->obj->min.x) / 2.0f,
+			 -(env->obj->max.y + env->obj->min.y) / 2.0f,
+			 -(env->obj->max.z + env->obj->min.z) / 2.0f});
 	display_loop(env);
 	glfwTerminate();
 	return 0;

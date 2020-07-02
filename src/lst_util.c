@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 12:30:37 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/07/01 15:52:23 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/07/02 11:53:44 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,23 +133,13 @@ unsigned int 	*delist_faces(t_faces *start, size_t size, t_env *env)
 			ret[i * 3 + 0] = tmp->uv.z - 1;
 			ret[i * 3 + 1] = tmp->uv.w - 1;
 			ret[i * 3 + 2] = tmp->uv.x - 1;
-			printf("FACE4 %zu: %u %u %u\n        %u %u %u\n", (i-1), ret[(i-1) * 3 + 0],
-					ret[(i-1) * 3 + 1], ret[(i-1) * 3 + 2], ret[(i-1) * 3 + 3], ret[(i-1) * 3 + 4], ret[(i-1) * 3 + 5]);
-		} else {
-			printf("FACE %zu: %u %u %u\n", i, ret[i * 3 + 0], ret[i * 3 + 1], ret[i * 3 + 2]);}
-//		free(tmp);
+		}
+		free(tmp);
 		tmp = tmp->next;
 		i++;
 	}
-	printf("%zu\n", isize);
 	//TODO Free
 	env->obj->isize = isize;
-	for (unsigned int j = 0; j < isize; j++)
-	{
-		ft_putnbr(ret[j]);
-		ft_putchar(' ');
-	}
-	ft_putendl("");
 	return (ret);
 }
 
