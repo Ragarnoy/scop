@@ -17,11 +17,7 @@
 #  else
 #  define APPLE 0
 # endif
-# define VBO env->vbo
-# define VAO env->vao
-# define EBO env->ebo
-# define SHADERPROGRAM env->shader
-# define IDENTITY 0x7FFFFFFF
+# define IDENTITY (float)0x7FFFFFFF
 # include <glad/glad.h>
 # include <math.h>
 # include "GLFW/glfw3.h"

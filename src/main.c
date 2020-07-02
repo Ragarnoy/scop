@@ -53,7 +53,7 @@ static int	display_loop(t_env *env)
 
 	error = 0;
 	retCode = 1;
-	glUseProgram(SHADERPROGRAM);
+	glUseProgram(env->shader);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_MULTISAMPLE);
 	glad_glUniform1f(env->uni.lerp, 0.0f);
@@ -62,15 +62,15 @@ static int	display_loop(t_env *env)
 		set_mvp(env);
 		processInput(env);
 		set_color(env);
-		glBindVertexArray(VAO);
+		glBindVertexArray(env->vao);
 		glDrawElements(GL_TRIANGLES, env->obj->isize, GL_UNSIGNED_INT, 0);
         glfwSwapBuffers(env->window);
         glfwPollEvents();
 		if ((error = glGetError()) != GL_NO_ERROR)
 			printf("####%d####\n", error);
 	}
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
+	glDeleteVertexArrays(1, &env->vao);
+	glDeleteBuffers(1, &env->vbo);
 	glDeleteProgram(env->shader);
 	return (retCode);
 }

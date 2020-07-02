@@ -13,7 +13,7 @@
 #include "../include/scop.h"
 #include <fcntl.h>
 
-void		set_max(t_obj *obj, t_vert *tmp)
+void			set_max(t_obj *obj, t_vert *tmp)
 {
 	t_fvec3 val;
 
@@ -31,7 +31,7 @@ void		set_max(t_obj *obj, t_vert *tmp)
 	obj->max = val;
 }
 
-void		set_min(t_obj *obj, t_vert *tmp)
+void			set_min(t_obj *obj, t_vert *tmp)
 {
 	t_fvec3 val;
 
@@ -49,12 +49,12 @@ void		set_min(t_obj *obj, t_vert *tmp)
 	obj->min = val;
 }
 
-t_faces		*ret_faces(char *str)
+t_faces			*ret_faces(char *str)
 {
 	int		i;
-	uint8_t spaces;
-	int 	tmp[4];
-	int 	size;
+	uint8_t	spaces;
+	int		tmp[4];
+	int		size;
 
 	size = ft_strlen(str);
 	ft_bzero(tmp, sizeof(int) * 4);
@@ -65,23 +65,21 @@ t_faces		*ret_faces(char *str)
 		if (ft_isdigit(str[i]))
 		{
 			tmp[spaces] = ft_atoi(str + i);
-//			printf("READING : '%s' ||| GETTING : '%d'\n", str + i, tmp[spaces]);
 			spaces++;
 			while (i < size && str[i] != ' ')
 				i++;
 		}
 		i++;
 	}
-//	printf("FUCK YOU FUCK YOU FUCK YOU %d %d %d %d\n\n", tmp[0], tmp[1], tmp[2], tmp[3]);
 	return (lst_facenew(tmp[0], tmp[1], tmp[2], tmp[3]));
 }
 
-t_vert 	*ret_vertices(char *str)
+t_vert			*ret_vertices(char *str)
 {
 	int		i;
+	int		size;
 	uint8_t spaces;
-	float 	tmp[3];
-	int 	size;
+	float	tmp[3];
 
 	size = ft_strlen(str);
 	ft_bzero(tmp, sizeof(float) * 3);
@@ -92,20 +90,18 @@ t_vert 	*ret_vertices(char *str)
 		if (str[i] == '-' || ft_isdigit(str[i]))
 		{
 			tmp[spaces] = ft_atof(str + i);
-//			printf("READING : '%s' ||| GETTING : '%f'\n", str + i, tmp[spaces]);
 			spaces++;
 			while (i < size && str[i] != ' ')
 				i++;
 		}
 		i++;
 	}
-//	printf("FUCK YOU FUCK YOU FUCK YOU %f %f %f\n\n", tmp[0], tmp[1], tmp[2]);
 	return (lst_vertnew(tmp[0], tmp[1], tmp[2]));
 }
 
-t_obj	*fill_list(int fd, t_obj *ret)
+t_obj			*fill_list(int fd, t_obj *ret)
 {
-	char 	*line;
+	char	*line;
 	t_vert	*curv;
 	t_vert	*last_vert;
 	t_faces	*curf;
@@ -118,7 +114,6 @@ t_obj	*fill_list(int fd, t_obj *ret)
 		if (line[0] == 'v' && line[1] == ' ')
 		{
 			curv = ret_vertices(line);
-//			printf("%f %f %f\n", curv->v.x, curv->v.y, curv->v.z);
 			vertice_add(curv, ret, &last_vert);
 		}
 		else if (line[0] == 'f' && line[1] == ' ')
@@ -130,21 +125,20 @@ t_obj	*fill_list(int fd, t_obj *ret)
 	return (ret);
 }
 
-t_obj 	*parse_obj(char *pth)
+t_obj			*parse_obj(char *pth)
 {
-	int 	fd;
-	t_obj 	*obj;
+	int		fd;
+	t_obj	*obj;
 
 	fd = 0;
 	obj = NULL;
 	if (ft_strlen(pth) >= 5 && !ft_strstr(ft_strsub(pth,
 			ft_strlen(pth) - 4, 4), ".obj"))
 		return (NULL);
-	//TODO CHECK IF EXIST RETARD
 	if ((fd = open(pth, O_RDONLY)) == -1)
 		return (NULL);
 	if (!(obj = ft_memalloc(sizeof(t_obj))))
-		return(NULL);
+		return (NULL);
 	obj->isize = 0;
 	obj->vsize = 0;
 	obj = fill_list(fd, obj);

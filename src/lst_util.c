@@ -98,7 +98,7 @@ float 	*delist_verts(t_vert *start, size_t size)
 		ret[i * 3 + 0] = tmp->v.x;
 		ret[i * 3 + 1] = tmp->v.y;
 		ret[i * 3 + 2] = tmp->v.z;
-		printf("VERT %zu: %f %f %f\n", i, ret[i * 3 + 0], ret[i * 3 + 1], ret[i * 3 + 2]);
+//		printf("VERT %zu: %f %f %f\n", i, ret[i * 3 + 0], ret[i * 3 + 1], ret[i * 3 + 2]);
 		free(tmp);
 		tmp = tmp->next;
 		i++;
@@ -118,7 +118,6 @@ unsigned int 	*delist_faces(t_faces *start, size_t size, t_env *env)
 	i = 0;
 	ret = ft_memalloc(sizeof(unsigned int) * (size * 5));
 	ft_bzero(ret, sizeof(unsigned int) * (size * 4));
-	printf("memsize = %zu\n", size * 4);
 	tmp = start;
 	while (tmp)
 	{

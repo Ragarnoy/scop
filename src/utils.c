@@ -61,6 +61,7 @@ void		set_color(t_env *env)
 	float			time_value;
 	float			color_shift;
 	t_fvec3			rgb;
+	int 			mode;
 
 	time_value = glfwGetTime();
 	color_shift = (sin(time_value) / 2.0f);
@@ -69,5 +70,11 @@ void		set_color(t_env *env)
 	rgb.x = color_shift + 0.2f;
 	rgb.y = color_shift + 0.1f;
 	rgb.z = color_shift + 0.2f;
+	glGetUniformiv(env->shader, env->uni.colmode, &mode);
+	if (mode == 3 && env->lerp < 1.0f)
+		env->lerp += 0.004f;
+	else if (mode != 3)
+		env->lerp = 0;
+	glUniform1f(env->uni.lerp, env->lerp);
 	glUniform4f(env->uni.vtxcol, rgb.x, rgb.y, rgb.z, 1.0f);
 }

@@ -17,6 +17,7 @@ uniform sampler2D   texture1;
 vec4    get_color()
 {
 	vec4 color = FragColor;
+    vec4 texColor;
 	float grey;
 
 	if (mode == COLOR)
@@ -27,11 +28,13 @@ vec4    get_color()
 	{
 		color = flat_col;
 		grey = (0.2125 * color.x + 0.7154 * color.y + 0.0721 * color.z) / 1.4f;
-//		color = vec4(grey, grey, grey, 1.0f);
-		color = mix(color, vec4(grey, grey, grey, 1.0f), lerp);
+		color = vec4(grey, grey, grey, 1.0f);
 	}
 	else if (mode == TEX)
-		color = texture(texture1, TexCoord);
+	{
+		texColor = texture(texture1, TexCoord);
+		color = mix(color, texColor, lerp);
+	}
 	return (color);
 }
 

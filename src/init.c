@@ -40,9 +40,7 @@ int setup_texture(t_env *env)
 	glGenTextures(1, &env->texture);
 	glBindTexture(GL_TEXTURE_2D, env->texture);
 	if (!(bmp = ft_parse_bmp("textures/wall.bmp")))
-	{
 		return (0);
-	}
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
@@ -64,16 +62,16 @@ int	setup_vertex(t_env *env)
 	vertices = delist_verts(env->obj->vertices, env->obj->vsize);
 	indices = delist_faces(env->obj->indices, env->obj->isize, env);
 
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
+    glGenVertexArrays(1, &env->vao);
+    glGenBuffers(1, &env->vbo);
+    glGenBuffers(1, &env->ebo);
 
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBindVertexArray(env->vao);
+	glBindBuffer(GL_ARRAY_BUFFER, env->vbo);
 
 	glBufferData(GL_ARRAY_BUFFER, (env->obj->vsize * 3) * sizeof(float), vertices, GL_STATIC_DRAW);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, env->ebo);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (env->obj->isize) * sizeof(unsigned int), indices, GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(0);
@@ -93,20 +91,20 @@ int	setup_shader(t_env *env)
     vertShader = load_vert("src/shaders/camera.vert");
 	fragShader = load_frag("src/shaders/camera.frag");
 	env->shader = glCreateProgram();
-	glAttachShader(SHADERPROGRAM, vertShader);
-	glAttachShader(SHADERPROGRAM, fragShader);
-	glLinkProgram(SHADERPROGRAM);
-	glGetProgramiv(SHADERPROGRAM, GL_LINK_STATUS, &success);
+	glAttachShader(env->shader, vertShader);
+	glAttachShader(env->shader, fragShader);
+	glLinkProgram(env->shader);
+	glGetProgramiv(env->shader, GL_LINK_STATUS, &success);
 	if (!success)
-		glProgramLogError(SHADERPROGRAM);
+		glProgramLogError(env->shader);
 	glDeleteShader(vertShader);
 	glDeleteShader(fragShader);
-	env->uni.model = glGetUniformLocation(SHADERPROGRAM, "model");
-	env->uni.proj = glGetUniformLocation(SHADERPROGRAM, "projection");
-	env->uni.view = glGetUniformLocation(SHADERPROGRAM, "view");
-	env->uni.vtxcol = glGetUniformLocation(SHADERPROGRAM, "vertexColor");
-	env->uni.colmode = glGetUniformLocation(SHADERPROGRAM, "mode");
-	env->uni.lerp = glGetUniformLocation(SHADERPROGRAM, "lerp");
+	env->uni.model = glGetUniformLocation(env->shader, "model");
+	env->uni.proj = glGetUniformLocation(env->shader, "projection");
+	env->uni.view = glGetUniformLocation(env->shader, "view");
+	env->uni.vtxcol = glGetUniformLocation(env->shader, "vertexColor");
+	env->uni.colmode = glGetUniformLocation(env->shader, "mode");
+	env->uni.lerp = glGetUniformLocation(env->shader, "lerp");
 	return (1);
 }
 
