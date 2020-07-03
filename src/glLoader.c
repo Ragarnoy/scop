@@ -24,15 +24,14 @@ int	load_vert(char *pth)
 	fd = open(pth, O_RDONLY);
     ret = ft_strnew(0);
 	while ((err = get_next_line(fd, &str)) > 0)
-	{
-		str = ft_strjoin(str, "\n");
-		ret = ft_strappend(ret, str, 2);
-	}
+		ret = ft_strappend(ret, ft_strappend(str, "\n", 1), 3);
+	free(str);
 	if (err == -1)
 		shutdown(3); // TODO err case for vert file read failure
 
 	vertShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertShader, 1, (const char *const *)&ret, NULL);
+	free(ret);
 	glCompileShader(vertShader);
 	glGetShaderiv(vertShader, GL_COMPILE_STATUS, &err);
 	if (err == 0)
@@ -52,15 +51,14 @@ int	load_frag(char *pth)
 	fd = open(pth, O_RDONLY);
 	ret = ft_strnew(0);
 	while ((err = get_next_line(fd, &str)) > 0)
-	{
-		str = ft_strjoin(str, "\n");
-		ret = ft_strappend(ret, str, 2);
-	}
+		ret = ft_strappend(ret, ft_strappend(str, "\n", 1), 3);
+	free(str);
 	if (err == -1)
 		shutdown(3); // TODO err case for frag file read failure
 
 	fragShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragShader, 1, (const char *const*)&ret, NULL);
+	free(ret);
 	glCompileShader(fragShader);
 	glGetShaderiv(fragShader, GL_COMPILE_STATUS, &err);
 	if (err == 0)

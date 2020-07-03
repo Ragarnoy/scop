@@ -21,7 +21,7 @@ int	setup_gl(t_env *env)
 	glfwWindowHint(GLFW_SAMPLES, 4);
 	if (APPLE)
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-	env->window = glfwCreateWindow(800, 600, "Ouais_ok", NULL, NULL);
+	env->window = glfwCreateWindow(800, 600, "SCOP", NULL, NULL);
 	if (env->window == NULL)
 		return (shutdown(1));
 	glfwMakeContextCurrent(env->window);
@@ -79,6 +79,8 @@ int	setup_vertex(t_env *env)
 
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(3 * sizeof(float)));
+	free(vertices);
+	free(indices);
 	return (1);
 }
 
@@ -120,7 +122,7 @@ t_env	*get_env(void)
 	m4_set(&env->mvp.proj, IDENTITY);
 	m4_set(&env->mvp.view, IDENTITY);
 	env->cam = (t_fvec3){0.0f, 0.0f, -6.5f};
-	env->rot = (t_fvec3) {0.0f, 0.3f, 0.0f};
+	env->rotdir = (t_fvec3) {0.0f, 0.3f, 0.0f};
 	env->rotspeed = 0.01f;
 	env->lerp = 0.0f;
 	return (env);

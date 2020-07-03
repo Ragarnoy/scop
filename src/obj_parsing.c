@@ -17,7 +17,7 @@ void			set_max(t_obj *obj, t_vert *tmp)
 {
 	t_fvec3 val;
 
-	val = (t_fvec3){0.0f, 0.0f, 0.0f};
+	val = (t_fvec3){tmp->v.x, tmp->v.y, tmp->v.z};
 	while (tmp)
 	{
 		if (tmp->v.x > val.x)
@@ -35,7 +35,7 @@ void			set_min(t_obj *obj, t_vert *tmp)
 {
 	t_fvec3 val;
 
-	val = (t_fvec3){0.0f, 0.0f, 0.0f};
+	val = (t_fvec3){tmp->v.x, tmp->v.y, tmp->v.z};
 	while (tmp)
 	{
 		if (tmp->v.x < val.x)
@@ -49,7 +49,7 @@ void			set_min(t_obj *obj, t_vert *tmp)
 	obj->min = val;
 }
 
-t_faces			*ret_faces(char *str)
+t_face			*ret_faces(char *str)
 {
 	int		i;
 	uint8_t	spaces;
@@ -104,8 +104,8 @@ t_obj			*fill_list(int fd, t_obj *ret)
 	char	*line;
 	t_vert	*curv;
 	t_vert	*last_vert;
-	t_faces	*curf;
-	t_faces	*last_curf;
+	t_face	*curf;
+	t_face	*last_curf;
 
 	last_vert = NULL;
 	last_curf = NULL;
@@ -121,7 +121,9 @@ t_obj			*fill_list(int fd, t_obj *ret)
 			curf = ret_faces(line);
 			face_add(curf, ret, &last_curf);
 		}
+		free(line);
 	}
+	free(line);
 	return (ret);
 }
 
@@ -132,8 +134,8 @@ t_obj			*parse_obj(char *pth)
 
 	fd = 0;
 	obj = NULL;
-	if (ft_strlen(pth) >= 5 && !ft_strstr(ft_strsub(pth,
-			ft_strlen(pth) - 4, 4), ".obj"))
+	if (ft_strlen(pth) >= 5 && !ft_strstr(
+			pth + (ft_strlen(pth) - 4), ".obj"))
 		return (NULL);
 	if ((fd = open(pth, O_RDONLY)) == -1)
 		return (NULL);

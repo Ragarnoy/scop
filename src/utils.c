@@ -44,7 +44,7 @@ void		framebuffer_size_callback(GLFWwindow *window, int width, int height)
 
 void		set_mvp(t_env *env)
 {
-	env->mvp.model = m4_rotate(env->mvp.model, env->rotspeed, env->rot);
+	env->mvp.model = m4_rotate(env->mvp.model, env->rotspeed, env->rotdir);
 	env->mvp.view = m4_translate(env->mvp.view, env->cam);
 	env->mvp.proj = perspective(deg_to_rad(45.0f),
 			800.0f / 600.0f, 0.1f, 100.0f);

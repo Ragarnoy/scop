@@ -12,12 +12,12 @@
 
 #include "../include/scop.h"
 
-t_vert		*lst_vertnew(float x, float y, float z)
+t_vert			*lst_vertnew(float x, float y, float z)
 {
 	t_vert	*new;
+
 	if (!(new = ft_memalloc(sizeof(t_vert))))
 		return (NULL);
-
 	new->v.x = x;
 	new->v.y = y;
 	new->v.z = z;
@@ -25,12 +25,12 @@ t_vert		*lst_vertnew(float x, float y, float z)
 	return (new);
 }
 
-t_faces 	*lst_facenew(uint16_t a, uint16_t b, uint16_t c, uint16_t d)
+t_face			*lst_facenew(uint16_t a, uint16_t b, uint16_t c, uint16_t d)
 {
-	t_faces	*new;
-	if (!(new = ft_memalloc(sizeof(t_faces))))
-		return (NULL);
+	t_face	*new;
 
+	if (!(new = ft_memalloc(sizeof(t_face))))
+		return (NULL);
 	new->uv.x = a;
 	new->uv.y = b;
 	new->uv.z = c;
@@ -39,33 +39,27 @@ t_faces 	*lst_facenew(uint16_t a, uint16_t b, uint16_t c, uint16_t d)
 	return (new);
 }
 
-void 	lst_vertdel(t_vert **list)
+t_vert			*lst_vertdelone(t_vert *list)
 {
 	t_vert	*tmp;
 
-	tmp = *list;
-	while (tmp)
-	{
-		free(tmp);
-		tmp = tmp->next;
-	}
-	*list = NULL;
+	tmp = list;
+	tmp = tmp->next;
+	free(list);
+	return (tmp);
 }
 
-void 	lst_facesdel(t_faces **list)
+t_face			*lst_facesdelone(t_face *list)
 {
-	t_faces	*tmp;
+	t_face	*tmp;
 
-	tmp = *list;
-	while (tmp)
-	{
-		free(tmp);
-		tmp = tmp->next;
-	}
-	*list = NULL;
+	tmp = list;
+	tmp = tmp->next;
+	free(list);
+	return (tmp);
 }
 
-void	vertice_add(t_vert *vert, t_obj *ret, t_vert **last_vert)
+void			vertice_add(t_vert *vert, t_obj *ret, t_vert **last_vert)
 {
 	if (*last_vert == NULL)
 		ret->vertices = vert;
@@ -74,8 +68,7 @@ void	vertice_add(t_vert *vert, t_obj *ret, t_vert **last_vert)
 	*last_vert = vert;
 }
 
-
-void	face_add(t_faces *face, t_obj *ret, t_faces **last_face)
+void			face_add(t_face *face, t_obj *ret, t_face **last_face)
 {
 	if (*last_face == NULL)
 		ret->indices = face;
@@ -84,10 +77,10 @@ void	face_add(t_faces *face, t_obj *ret, t_faces **last_face)
 	*last_face = face;
 }
 
-float 	*delist_verts(t_vert *start, size_t size)
+float			*delist_verts(t_vert *start, size_t size)
 {
-	size_t 	i;
-	float 	*ret;
+	size_t	i;
+	float	*ret;
 	t_vert	*tmp;
 
 	i = 0;
@@ -98,21 +91,18 @@ float 	*delist_verts(t_vert *start, size_t size)
 		ret[i * 3 + 0] = tmp->v.x;
 		ret[i * 3 + 1] = tmp->v.y;
 		ret[i * 3 + 2] = tmp->v.z;
-//		printf("VERT %zu: %f %f %f\n", i, ret[i * 3 + 0], ret[i * 3 + 1], ret[i * 3 + 2]);
-		free(tmp);
-		tmp = tmp->next;
+		tmp = lst_vertdelone(tmp);
 		i++;
 	}
-	//TODO Free
 	return (ret);
 }
 
-unsigned int 	*delist_faces(t_faces *start, size_t size, t_env *env)
+unsigned int	*delist_faces(t_face *start, size_t size, t_env *env)
 {
 	size_t			i;
 	unsigned int	*ret;
-	t_faces			*tmp;
-	size_t 			isize;
+	t_face			*tmp;
+	size_t			isize;
 
 	isize = 0;
 	i = 0;
@@ -133,16 +123,14 @@ unsigned int 	*delist_faces(t_faces *start, size_t size, t_env *env)
 			ret[i * 3 + 1] = tmp->uv.w - 1;
 			ret[i * 3 + 2] = tmp->uv.x - 1;
 		}
-		free(tmp);
-		tmp = tmp->next;
+		tmp = lst_facesdelone(tmp);
 		i++;
 	}
-	//TODO Free
 	env->obj->isize = isize;
 	return (ret);
 }
 
-size_t 	count_verts(t_vert *verts)
+size_t			count_verts(t_vert *verts)
 {
 	size_t	size;
 	t_vert	*tmp;
@@ -157,10 +145,10 @@ size_t 	count_verts(t_vert *verts)
 	return (size);
 }
 
-size_t 	count_faces(t_faces *faces)
+size_t			count_faces(t_face *faces)
 {
 	size_t	size;
-	t_faces	*tmp;
+	t_face	*tmp;
 
 	size = 0;
 	tmp = faces;

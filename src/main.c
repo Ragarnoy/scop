@@ -25,7 +25,7 @@ void		debug_mats(t_mat4 model, t_mat4 view, t_mat4 projection)
 		   projection.m[8], projection.m[9], projection.m[10], projection.m[11], projection.m[12], projection.m[13], projection.m[14], projection.m[15]);
 }
 
-void		processInput(t_env *env)
+void		process_input(t_env *env)
 {
 	if (glfwGetKey(env->window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(env->window, 1);
@@ -45,14 +45,13 @@ void		processInput(t_env *env)
 		movement(env);
 }
 
-
 static int	display_loop(t_env *env)
 {
-	int				retCode;
-	unsigned int 	error;
+	int				ret_code;
+	unsigned int	error;
 
 	error = 0;
-	retCode = 1;
+	ret_code = 1;
 	glUseProgram(env->shader);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_MULTISAMPLE);
@@ -60,43 +59,44 @@ static int	display_loop(t_env *env)
 	while (!glfwWindowShouldClose(env->window))
 	{
 		set_mvp(env);
-		processInput(env);
+		process_input(env);
 		set_color(env);
 		glBindVertexArray(env->vao);
 		glDrawElements(GL_TRIANGLES, env->obj->isize, GL_UNSIGNED_INT, 0);
-        glfwSwapBuffers(env->window);
-        glfwPollEvents();
+		glfwSwapBuffers(env->window);
+		glfwPollEvents();
 		if ((error = glGetError()) != GL_NO_ERROR)
 			printf("####%d####\n", error);
 	}
 	glDeleteVertexArrays(1, &env->vao);
 	glDeleteBuffers(1, &env->vbo);
 	glDeleteProgram(env->shader);
-	return (retCode);
+	return (ret_code);
 }
 
 int			main(int argc, char *argv[])
 {
-	t_env *env;
+	t_env	*env;
 
 	if (argc != 2 || !argv[1])
 		shutdown(0);
 	env = get_env();
 	if (!(env->obj = parse_obj(argv[1])))
-		return (-1);
+		return (4);
 	if (!setup_gl(env))
-		return (-1);
-    if (!setup_shader(env))
-    	return (-1);
-    if (!setup_vertex(env))
-    	return (-1);
-    if (!setup_texture(env))
-		return (-1);
-	env->mvp.model = m4_translate(env->mvp.model,
-			(t_fvec3){-(env->obj->max.x + env->obj->min.x) / 2.0f,
-			 -(env->obj->max.y + env->obj->min.y) / 2.0f,
-			 -(env->obj->max.z + env->obj->min.z) / 2.0f});
+		return (5);
+	if (!setup_shader(env))
+		return (5);
+	if (!setup_vertex(env))
+		return (6);
+	if (!setup_texture(env))
+		return (7);
+	env->cam = (t_fvec3){0.0f, 0.0f, -(env->obj->max.z -
+					env->obj->min.z) * 2.0f};
+	env->mvp.model = m4_translate(env->mvp.model, (t_fvec3){
+		-(env->obj->max.x + env->obj->min.x) / 2.0f, -(env->obj->max.y +
+		env->obj->min.y) / 2.0f, -(env->obj->max.z + env->obj->min.z) / 2.0f});
 	display_loop(env);
 	glfwTerminate();
-	return 0;
+	return (0);
 }

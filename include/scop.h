@@ -75,13 +75,13 @@ typedef struct 		s_faces
 {
 	t_uvec4 		uv;
 	struct s_faces	*next;
-}					t_faces;
+}					t_face;
 
 typedef struct 		s_obj
 {
 	t_vert 			*vertices;
 	size_t 			vsize;
-	t_faces			*indices;
+	t_face			*indices;
 	size_t 			isize;
 	t_fvec3			min;
 	t_fvec3			max;
@@ -111,7 +111,7 @@ typedef struct 		s_env
 	t_mvp			mvp;
 	t_uniform		uni;
 	t_fvec3			cam;
-	t_fvec3			rot;
+	t_fvec3			rotdir;
 	float 			rotspeed;
 	GLuint			vbo;
     GLuint			vao;
@@ -135,7 +135,6 @@ t_mat4	m4_sub(t_mat4 a, t_mat4 b);
 t_mat4	m4_mul(t_mat4 a, t_mat4 b);
 t_mat4	m4_scale(t_mat4 m, float f);
 t_mat4 	m4_copy(t_mat4 *in, t_mat4 to_copy);
-t_mat4	m4_rotate_axis(t_mat4 m, t_axis axis, float angle);
 t_mat4	m4_rotate(t_mat4 mat, float angle, t_fvec3 ax);
 t_mat4	m4_translate(t_mat4 mat, t_fvec3 vec);
 void	m4_set(t_mat4 *m, float f);
@@ -179,22 +178,19 @@ void			set_mvp(t_env *env);
 void			set_color(t_env *env);
 void			printAndTerminate(char *str);
 void			framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void			processInput(t_env *env);
+void			process_input(t_env *env);
 void			glShaderLogError(int shader, int shaderType);
 void			glProgramLogError(int program);
-t_mat4			look_at(t_fvec3 pos, t_fvec3 center, t_fvec3 up);
 t_mat4		 	perspective(float fov, float aspect, float near, float far);
 t_env			*get_env(void);
 t_obj 			*parse_obj(char *pth);
 t_vert			*lst_vertnew(float x, float y, float z);
-void			lst_vertdel(t_vert **list);
-t_faces			*lst_facenew(uint16_t a, uint16_t b, uint16_t c, uint16_t d);
-void 			lst_facesdel(t_faces **list);
+t_face			*lst_facenew(uint16_t a, uint16_t b, uint16_t c, uint16_t d);
 void			vertice_add(t_vert *vert, t_obj *ret, t_vert **last_vert);
-void			face_add(t_faces *face, t_obj *ret, t_faces **last_face);
+void			face_add(t_face *face, t_obj *ret, t_face **last_face);
 float			*delist_verts(t_vert *start, size_t size);
 size_t 			count_verts(t_vert *verts);
-size_t			count_faces(t_faces *faces);
-unsigned int	*delist_faces(t_faces *start, size_t size, t_env *env);
+size_t			count_faces(t_face *faces);
+unsigned int	*delist_faces(t_face *start, size_t size, t_env *env);
 
 #endif
