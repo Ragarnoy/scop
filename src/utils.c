@@ -61,7 +61,7 @@ void		set_color(t_env *env)
 	float			time_value;
 	float			color_shift;
 	t_fvec3			rgb;
-	int 			mode;
+	int				mode;
 
 	time_value = glfwGetTime();
 	color_shift = (sin(time_value) / 2.0f);
