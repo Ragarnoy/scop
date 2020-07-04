@@ -18,7 +18,7 @@ unsigned char	*read_pixel(int size, int fd, uint32_t offset)
 	int				i;
 	t_image			img;
 	unsigned char	*ret;
-	unsigned char 	tmp[100];
+	unsigned char	tmp[100];
 
 	i = -1;
 	ret = ft_memalloc(sizeof(unsigned char) * (size * 4) + 1);

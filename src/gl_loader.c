@@ -15,36 +15,9 @@
 
 int	load_vert(char *pth)
 {
-	int 	fd;
-	int	    vertShader;
-	int	    err;
-	char	*str;
-	char	*ret;
-
-	fd = open(pth, O_RDONLY);
-    ret = ft_strnew(0);
-	while ((err = get_next_line(fd, &str)) > 0)
-		ret = ft_strappend(ret, ft_strappend(str, "\n", 1), 3);
-	free(str);
-	if (err == -1)
-		shutdown(3); // TODO err case for vert file read failure
-
-	vertShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertShader, 1, (const char *const *)&ret, NULL);
-	free(ret);
-	glCompileShader(vertShader);
-	glGetShaderiv(vertShader, GL_COMPILE_STATUS, &err);
-	if (err == 0)
-		glShaderLogError(vertShader, GL_VERTEX_SHADER);
-	return (vertShader);
-}
-
-
-int	load_frag(char *pth)
-{
-	int 	fd;
-	int	    fragShader;
-	int	    err;
+	int		fd;
+	int		vert_shader;
+	int		err;
 	char	*str;
 	char	*ret;
 
@@ -54,14 +27,38 @@ int	load_frag(char *pth)
 		ret = ft_strappend(ret, ft_strappend(str, "\n", 1), 3);
 	free(str);
 	if (err == -1)
-		shutdown(3); // TODO err case for frag file read failure
-
-	fragShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragShader, 1, (const char *const*)&ret, NULL);
+		shutdown(3);
+	vert_shader = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(vert_shader, 1, (const char *const *)&ret, NULL);
 	free(ret);
-	glCompileShader(fragShader);
-	glGetShaderiv(fragShader, GL_COMPILE_STATUS, &err);
+	glCompileShader(vert_shader);
+	glGetShaderiv(vert_shader, GL_COMPILE_STATUS, &err);
 	if (err == 0)
-		glShaderLogError(fragShader, GL_FRAGMENT_SHADER);
-	return (fragShader);
+		glshader_log_error(vert_shader, GL_VERTEX_SHADER);
+	return (vert_shader);
+}
+
+int	load_frag(char *pth)
+{
+	int		fd;
+	int		frag_shader;
+	int		err;
+	char	*str;
+	char	*ret;
+
+	fd = open(pth, O_RDONLY);
+	ret = ft_strnew(0);
+	while ((err = get_next_line(fd, &str)) > 0)
+		ret = ft_strappend(ret, ft_strappend(str, "\n", 1), 3);
+	free(str);
+	if (err == -1)
+		shutdown(3);
+	frag_shader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(frag_shader, 1, (const char *const*)&ret, NULL);
+	free(ret);
+	glCompileShader(frag_shader);
+	glGetShaderiv(frag_shader, GL_COMPILE_STATUS, &err);
+	if (err == 0)
+		glshader_log_error(frag_shader, GL_FRAGMENT_SHADER);
+	return (frag_shader);
 }

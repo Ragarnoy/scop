@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../include/scop.h"
-#include <fcntl.h>
 
 void			set_max(t_obj *obj, t_vert *tmp)
 {
@@ -125,30 +124,4 @@ t_obj			*fill_list(int fd, t_obj *ret)
 	}
 	free(line);
 	return (ret);
-}
-
-t_obj			*parse_obj(char *pth)
-{
-	int		fd;
-	t_obj	*obj;
-
-	fd = 0;
-	obj = NULL;
-	if (ft_strlen(pth) >= 5 && !ft_strstr(
-			pth + (ft_strlen(pth) - 4), ".obj"))
-		return (NULL);
-	if ((fd = open(pth, O_RDONLY)) == -1)
-		return (NULL);
-	if (!(obj = ft_memalloc(sizeof(t_obj))))
-		return (NULL);
-	obj->isize = 0;
-	obj->vsize = 0;
-	obj = fill_list(fd, obj);
-	if (obj->vertices)
-		obj->vsize = count_verts(obj->vertices);
-	if (obj->indices)
-		obj->isize = count_faces(obj->indices);
-	set_max(obj, obj->vertices);
-	set_min(obj, obj->vertices);
-	return (obj);
 }

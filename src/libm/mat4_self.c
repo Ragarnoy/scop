@@ -26,7 +26,7 @@ void		m4_set(t_mat4 *m, float f)
 	}
 }
 
-t_mat4	 	m4_copy(t_mat4 *in, t_mat4 to_copy)
+t_mat4		m4_copy(t_mat4 *in, t_mat4 to_copy)
 {
 	int i;
 

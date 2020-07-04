@@ -25,7 +25,7 @@ int			setup_gl(t_env *env)
 	if (env->window == NULL)
 		return (shutdown(1));
 	glfwMakeContextCurrent(env->window);
-	glfwSetFramebufferSizeCallback(env->window, framebuffer_size_callback);
+	glfwSetFramebufferSizeCallback(env->window, frmbuff_size_cback);
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		return (shutdown(2));
 	return (1);
@@ -63,13 +63,17 @@ int			setup_vertex(t_env *env)
 	glGenBuffers(1, &env->ebo);
 	glBindVertexArray(env->vao);
 	glBindBuffer(GL_ARRAY_BUFFER, env->vbo);
-	glBufferData(GL_ARRAY_BUFFER, (env->obj->vsize * 3) * sizeof(float), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, (env->obj->vsize * 3) * sizeof(float),
+			vertices, GL_STATIC_DRAW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, env->ebo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (env->obj->isize) * sizeof(unsigned int), indices, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
+			(env->obj->isize) * sizeof(unsigned int), indices, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT,
+			GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float),
+			(void*)(3 * sizeof(float)));
 	free(vertices);
 	free(indices);
 	return (1);
@@ -89,7 +93,7 @@ int			setup_shader(t_env *env)
 	glLinkProgram(env->shader);
 	glGetProgramiv(env->shader, GL_LINK_STATUS, &success);
 	if (!success)
-		glProgramLogError(env->shader);
+		glprogram_log_error(env->shader);
 	glDeleteShader(vert_shader);
 	glDeleteShader(frag_shader);
 	env->uni.model = glGetUniformLocation(env->shader, "model");
@@ -109,6 +113,7 @@ t_env		*get_env(void)
 		return (env);
 	if (!(env = ft_memalloc(sizeof(t_env))))
 		exit(-1);
+	ft_bzero(env, sizeof(t_env));
 	m4_set(&env->mvp.model, IDENTITY);
 	m4_set(&env->mvp.proj, IDENTITY);
 	m4_set(&env->mvp.view, IDENTITY);

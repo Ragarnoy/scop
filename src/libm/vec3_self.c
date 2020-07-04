@@ -19,7 +19,7 @@ void		fv3_set(t_fvec3 *v, float f)
 	v->z = f;
 }
 
-t_fvec3 	fv3_copy(t_fvec3 *in, t_fvec3 *to_copy)
+t_fvec3		fv3_copy(t_fvec3 *in, t_fvec3 *to_copy)
 {
 	in->x = to_copy->x;
 	in->y = to_copy->y;

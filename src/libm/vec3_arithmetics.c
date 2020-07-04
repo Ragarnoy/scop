@@ -44,7 +44,7 @@ t_fvec3		fv3_fmul(t_fvec3 a, float f)
 	return (a);
 }
 
-float	 	fv3_dot(t_fvec3 a, t_fvec3 b)
+float		fv3_dot(t_fvec3 a, t_fvec3 b)
 {
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }

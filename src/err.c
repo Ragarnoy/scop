@@ -12,41 +12,52 @@
 
 #include "../include/scop.h"
 
-void	glShaderLogError(int shader, int shaderType)
+void		glshader_log_error(int shader, int shader_type)
 {
-	char infoLog[512];
+	char	info_log[512];
 
-	glGetShaderInfoLog(shader, 512, NULL, infoLog);
-	if (shaderType == GL_VERTEX_SHADER)
+	glGetShaderInfoLog(shader, 512, NULL, info_log);
+	if (shader_type == GL_VERTEX_SHADER)
 		ft_putendl("ERROR::SHADER::VERTEX::COMPILATION_FAILED");
 	else
 		ft_putendl("ERROR::SHADER::FRAG::COMPILATION_FAILED");
-	ft_putendl(infoLog);
-	shutdown(3); // TODO err case for shader compile error
+	ft_putendl(info_log);
+	shutdown(3);
 }
 
-void	glProgramLogError(int program)
+void		glprogram_log_error(int program)
 {
-	char infoLog[512];
+	char	info_log[512];
 
 	ft_putendl("ERROR::SHADER::PROGRAM::LINKING_FAILED");
-	glGetProgramInfoLog(program, 512, NULL, infoLog);
-	ft_putendl(infoLog);
-	shutdown(3); // TODO err case for shader program compile error
+	glGetProgramInfoLog(program, 512, NULL, info_log);
+	ft_putendl(info_log);
+	shutdown(3);
 }
-void	printAndTerminate(char *str)
+
+void		print_and_terminate(char *str)
 {
 	ft_putendl(str);
 	glfwTerminate();
 }
 
-int	shutdown(int err)
+int			shutdown(int err)
 {
 	if (err == 0)
 		ft_putendl("Usage : scop [file.obj]");
 	if (err == 1)
-		printAndTerminate("Uninitialized window.");
+		print_and_terminate("Uninitialized window.");
 	if (err == 2)
-		printAndTerminate("Glad was not loaded.");
+		print_and_terminate("Glad was not loaded.");
+	if (err == 3)
+		print_and_terminate("Shader compilation error.");
+	if (err == 4)
+		print_and_terminate("Failed to parse/open obj.");
+	if (err == 5)
+		print_and_terminate("Failed to setup shader.");
+	if (err == 6)
+		print_and_terminate("Failed to setup vertex.");
+	if (err == 7)
+		print_and_terminate("Could not load the texture.");
 	exit(64);
 }

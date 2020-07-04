@@ -1,6 +1,6 @@
 NAME = scop
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3 -o0
 CPPFLAGS = -I ./include `pkg-config --cflags glfw3`
 INC_PATH = include/
 OBJ_PATH = obj
@@ -11,8 +11,9 @@ SRC_NAME = main.c \
 	   view.c \
 	   init.c \
 	   utils.c \
-	   glLoader.c \
+	   gl_loader.c \
 	   lst_util.c \
+	   lst_util2.c \
 	   obj_parsing.c \
 	   libm/vec3_self.c \
 	   libm/mat4_self.c \

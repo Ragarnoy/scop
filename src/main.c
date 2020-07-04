@@ -11,18 +11,27 @@
 /* ************************************************************************** */
 
 #include "../include/scop.h"
+#include <fcntl.h>
 
-void		debug_mats(t_mat4 model, t_mat4 view, t_mat4 projection)
+t_obj		*parse_obj(char *pth)
 {
-	printf("\nMatrix print M##\n%f  %f  %f  %f\n%f  %f  %f  %f\n%f  %f  %f  %f\n%f  %f  %f  %f\n################",
-		   model.m[0], model.m[1], model.m[2], model.m[3], model.m[4], model.m[5], model.m[6], model.m[7],
-		   model.m[8], model.m[9], model.m[10], model.m[11], model.m[12], model.m[13], model.m[14], model.m[15]);
-	printf("\nMatrix print V##\n%f  %f  %f  %f\n%f  %f  %f  %f\n%f  %f  %f  %f\n%f  %f  %f  %f\n################",
-		   view.m[0], view.m[1], view.m[2], view.m[3], view.m[4], view.m[5], view.m[6], view.m[7],
-		   view.m[8], view.m[9], view.m[10], view.m[11], view.m[12], view.m[13], view.m[14], view.m[15]);
-	printf("\nMatrix print P##\n%f  %f  %f  %f\n%f  %f  %f  %f\n%f  %f  %f  %f\n%f  %f  %f  %f\n################",
-		   projection.m[0], projection.m[1], projection.m[2], projection.m[3], projection.m[4], projection.m[5], projection.m[6], projection.m[7],
-		   projection.m[8], projection.m[9], projection.m[10], projection.m[11], projection.m[12], projection.m[13], projection.m[14], projection.m[15]);
+	int		fd;
+	t_obj	*obj;
+
+	fd = 0;
+	obj = NULL;
+	if (ft_strlen(pth) >= 5 && !ft_strstr(
+			pth + (ft_strlen(pth) - 4), ".obj"))
+		return (NULL);
+	if ((fd = open(pth, O_RDONLY)) == -1)
+		return (NULL);
+	if (!(obj = ft_memalloc(sizeof(t_obj))))
+		return (NULL);
+	ft_bzero(obj, sizeof(t_obj));
+	obj = fill_list(fd, obj);
+	set_max(obj, obj->vertices);
+	set_min(obj, obj->vertices);
+	return (obj);
 }
 
 void		process_input(t_env *env)

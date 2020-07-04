@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../include/scop.h"
-// TODO AVX ? SIMD ?
+
 t_mat4		m4_add(t_mat4 a, t_mat4 b)
 {
 	int i;
@@ -34,9 +34,9 @@ t_mat4		m4_sub(t_mat4 a, t_mat4 b)
 
 t_mat4		m4_mul(t_mat4 a, t_mat4 b)
 {
-	int 	x;
-	int 	y;
-	int 	z;
+	int		x;
+	int		y;
+	int		z;
 	t_mat4	m;
 
 	x = -1;

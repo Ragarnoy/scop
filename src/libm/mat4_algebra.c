@@ -12,10 +12,10 @@
 
 #include "../../include/scop.h"
 
-t_mat4 		m4_transpose(t_mat4 m)
+t_mat4		m4_transpose(t_mat4 m)
 {
-	int 	x;
-	int 	y;
+	int		x;
+	int		y;
 	t_mat4	t;
 
 	x = -1;
@@ -29,7 +29,7 @@ t_mat4 		m4_transpose(t_mat4 m)
 	return (m);
 }
 
-t_mat4 		m4_translate(t_mat4 mat, t_fvec3 vec)
+t_mat4		m4_translate(t_mat4 mat, t_fvec3 vec)
 {
 	t_mat4 ret;
 
@@ -41,11 +41,11 @@ t_mat4 		m4_translate(t_mat4 mat, t_fvec3 vec)
 	return (ret);
 }
 
-t_mat4 m4_rotate(t_mat4 mat, float angle, t_fvec3 ax)
+t_mat4		m4_rotate(t_mat4 mat, float angle, t_fvec3 ax)
 {
 	t_mat4	r;
-	float 	cosa;
-	float 	sina;
+	float	cosa;
+	float	sina;
 	t_fvec3	axis;
 	t_fvec3	tmp;
 
@@ -54,7 +54,7 @@ t_mat4 m4_rotate(t_mat4 mat, float angle, t_fvec3 ax)
 	sina = sinf(angle);
 	axis = fv3_normalize(ax);
 	tmp = (t_fvec3){(1.0f - cosa) * axis.x,
-				 (1.0f - cosa) * axis.y, (1.0f - cosa) * axis.z};
+				(1.0f - cosa) * axis.y, (1.0f - cosa) * axis.z};
 	r.m[0] = cosa + tmp.x * axis.x;
 	r.m[1] = 0 + tmp.x * axis.y + sina * axis.z;
 	r.m[2] = 0 + tmp.x * axis.z - sina * axis.y;

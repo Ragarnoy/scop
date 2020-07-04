@@ -12,12 +12,12 @@
 
 #include "../../include/scop.h"
 
-float 	deg_to_rad(float deg)
+float	deg_to_rad(float deg)
 {
 	return (deg / 180 * (float)M_PI);
 }
 
-float 	rad_to_deg(float deg)
+float	rad_to_deg(float deg)
 {
 	return (deg / (float)M_PI * 180);
 }

@@ -36,9 +36,9 @@ void		movement(t_env *env)
 		env->rotspeed -= 0.001f;
 }
 
-void		framebuffer_size_callback(GLFWwindow *window, int width, int height)
+void		frmbuff_size_cback(GLFWwindow *win, int width, int height)
 {
-	(void)window;
+	(void)win;
 	glViewport(0, 0, width, height);
 }
 

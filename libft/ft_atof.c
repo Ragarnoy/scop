@@ -14,7 +14,7 @@
 
 float		decimal(const char *str, int i, float ret)
 {
-	unsigned long 	dec;
+	unsigned long	dec;
 
 	dec = 1;
 	i++;
@@ -39,10 +39,10 @@ float		ft_atof(const char *str)
 		return (0.0f);
 	while (!ft_isdigit(str[i]))
 	{
-        if (str[i] == '-')
-            sign = -1.0f;
-        i++;
-    }
+		if (str[i] == '-')
+			sign = -1.0f;
+		i++;
+	}
 	while (ft_isdigit(str[i]))
 	{
 		ret *= 10;

@@ -12,9 +12,9 @@
 
 #include "../../include/scop.h"
 
-float 		fv3_magnitude(t_fvec3 v)
+float		fv3_magnitude(t_fvec3 v)
 {
-	return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z));
+	return (sqrtf(v.x * v.x + v.y * v.y + v.z * v.z));
 }
 
 t_fvec3		fv3_normalize(t_fvec3 v)
