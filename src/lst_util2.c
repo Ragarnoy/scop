@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 12:30:37 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/07/02 11:53:44 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/07/04 19:02:39 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,13 @@ float			*delist_verts(t_vert *start, size_t size)
 	return (ret);
 }
 
-unsigned int 	*assign_face(t_face	*tmp, size_t *i, size_t size)
+void			assign_face(unsigned int **ret, size_t *i,
+		size_t size, size_t *isize)
 {
+	*ret = ft_memalloc(sizeof(unsigned int) * (size * 5));
+	ft_bzero(*ret, sizeof(unsigned int) * (size * 5));
+	*isize = 0;
 	*i = 0;
-	return (ft_memalloc(sizeof(unsigned int) * (size * 5)));
 }
 
 unsigned int	*delist_faces(t_face *start, size_t size, t_env *env)
@@ -65,10 +68,7 @@ unsigned int	*delist_faces(t_face *start, size_t size, t_env *env)
 	t_face			*tmp;
 	size_t			isize;
 
-	isize = 0;
-	i = 0;
-	ret = ft_memalloc(sizeof(unsigned int) * (size * 5)); // fucking BS size shit
-	ft_bzero(ret, sizeof(unsigned int) * (size * 4));
+	assign_face(&ret, &i, size, &isize);
 	tmp = start;
 	while (tmp)
 	{
@@ -76,9 +76,8 @@ unsigned int	*delist_faces(t_face *start, size_t size, t_env *env)
 		ret[i * 3 + 1] = tmp->uv.y - 1;
 		ret[i * 3 + 2] = tmp->uv.z - 1;
 		isize += 3;
-		if (tmp->uv.w != 0)
+		if (tmp->uv.w != 0 && (isize += 3))
 		{
-			isize += 3;
 			i++;
 			ret[i * 3 + 0] = tmp->uv.z - 1;
 			ret[i * 3 + 1] = tmp->uv.w - 1;

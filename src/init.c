@@ -114,9 +114,9 @@ t_env		*get_env(void)
 	if (!(env = ft_memalloc(sizeof(t_env))))
 		exit(-1);
 	ft_bzero(env, sizeof(t_env));
-	m4_set(&env->mvp.model, IDENTITY);
-	m4_set(&env->mvp.proj, IDENTITY);
-	m4_set(&env->mvp.view, IDENTITY);
+	m4_set(&env->mvp.model, (float)IDENTITY);
+	m4_set(&env->mvp.proj, (float)IDENTITY);
+	m4_set(&env->mvp.view, (float)IDENTITY);
 	env->cam = (t_fvec3){0.0f, 0.0f, -6.5f};
 	env->rotdir = (t_fvec3) {0.0f, 0.3f, 0.0f};
 	env->rotspeed = 0.01f;

@@ -49,7 +49,7 @@ t_mat4		m4_rotate(t_mat4 mat, float angle, t_fvec3 ax)
 	t_fvec3	axis;
 	t_fvec3	tmp;
 
-	m4_set(&r, IDENTITY);
+	m4_set(&r, (float)IDENTITY);
 	cosa = cosf(angle);
 	sina = sinf(angle);
 	axis = fv3_normalize(ax);

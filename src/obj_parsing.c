@@ -110,12 +110,12 @@ t_obj			*fill_list(int fd, t_obj *ret)
 	last_curf = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
-		if (line[0] == 'v' && line[1] == ' ')
+		if (line[0] == 'v' && line[1] == ' ' && (ret->vsize += 1))
 		{
 			curv = ret_vertices(line);
 			vertice_add(curv, ret, &last_vert);
 		}
-		else if (line[0] == 'f' && line[1] == ' ')
+		else if (line[0] == 'f' && line[1] == ' ' && (ret->isize += 1))
 		{
 			curf = ret_faces(line);
 			face_add(curf, ret, &last_curf);

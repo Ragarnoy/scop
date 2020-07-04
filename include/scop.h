@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:33:16 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/07/02 17:07:45 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/07/04 19:08:56 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 # ifdef __APPLE__
 #  define APPLE 1
 # else
-# define APPLE 0
+#  define APPLE 0
 # endif
-# define IDENTITY (float)0x7FFFFFFF
+# define IDENTITY 0x7FFFFFFF
 # include <glad/glad.h>
 # include <math.h>
 # include "GLFW/glfw3.h"
 # include "../libft/libft.h"
 # include <math.h>
-# include <stdio.h> //TODO remove me and the rest
 
 typedef enum		e_axis
 {
@@ -67,14 +66,14 @@ typedef struct		s_fvec3
 
 typedef struct		s_vert
 {
-	t_fvec3			v;
 	struct s_vert	*next;
+	t_fvec3			v;
 }					t_vert;
 
 typedef struct		s_faces
 {
-	t_uvec4			uv;
 	struct s_faces	*next;
+	t_uvec4			uv;
 }					t_face;
 
 typedef struct		s_obj
@@ -126,7 +125,7 @@ typedef struct		s_env
 */
 
 /*
-* Matrices
+** Matrices
 */
 
 t_mat4				m4_transpose(t_mat4 m);
@@ -140,8 +139,8 @@ t_mat4				m4_translate(t_mat4 mat, t_fvec3 vec);
 void				m4_set(t_mat4 *m, float f);
 
 /*
- * Vectors
- */
+** Vectors
+*/
 
 t_fvec3				fv3_add(t_fvec3 a, t_fvec3 b);
 t_fvec3				fv3_sub(t_fvec3 a, t_fvec3 b);
@@ -156,15 +155,15 @@ float				fv3_magnitude(t_fvec3 v);
 void				fv3_set(t_fvec3 *v, float f);
 
 /*
- * Misc
- */
+** Misc
+*/
 
 float				deg_to_rad(float deg);
 float				rad_to_deg(float deg);
 
 /*
- * SCOP
- */
+** SCOP
+*/
 
 int					shutdown(int err);
 int					setup_gl(t_env *env);

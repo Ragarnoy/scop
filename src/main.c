@@ -31,6 +31,7 @@ t_obj		*parse_obj(char *pth)
 	obj = fill_list(fd, obj);
 	set_max(obj, obj->vertices);
 	set_min(obj, obj->vertices);
+	printf("%zu %zu\n", obj->vsize, obj->isize);
 	return (obj);
 }
 
