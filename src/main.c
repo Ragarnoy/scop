@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 13:50:39 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/07/02 16:42:10 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/07/06 13:03:36 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_obj		*parse_obj(char *pth)
 	if (ft_strlen(pth) >= 5 && !ft_strstr(
 			pth + (ft_strlen(pth) - 4), ".obj"))
 		return (NULL);
-	if ((fd = open(pth, O_RDONLY)) == -1)
+	if ((fd = open(pth, O_RDONLY)) < 1)
 		return (NULL);
 	if (!(obj = ft_memalloc(sizeof(t_obj))))
 		return (NULL);
@@ -31,7 +31,6 @@ t_obj		*parse_obj(char *pth)
 	obj = fill_list(fd, obj);
 	set_max(obj, obj->vertices);
 	set_min(obj, obj->vertices);
-	printf("%zu %zu\n", obj->vsize, obj->isize);
 	return (obj);
 }
 
@@ -55,13 +54,8 @@ void		process_input(t_env *env)
 		movement(env);
 }
 
-static int	display_loop(t_env *env)
+static void	display_loop(t_env *env)
 {
-	int				ret_code;
-	unsigned int	error;
-
-	error = 0;
-	ret_code = 1;
 	glUseProgram(env->shader);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_MULTISAMPLE);
@@ -75,13 +69,12 @@ static int	display_loop(t_env *env)
 		glDrawElements(GL_TRIANGLES, env->obj->isize, GL_UNSIGNED_INT, 0);
 		glfwSwapBuffers(env->window);
 		glfwPollEvents();
-		if ((error = glGetError()) != GL_NO_ERROR)
-			printf("####%d####\n", error);
+		if (glGetError() != GL_NO_ERROR)
+			ft_putendl("Encountered major error during display loop.");
 	}
 	glDeleteVertexArrays(1, &env->vao);
 	glDeleteBuffers(1, &env->vbo);
 	glDeleteProgram(env->shader);
-	return (ret_code);
 }
 
 int			main(int argc, char *argv[])
@@ -92,15 +85,15 @@ int			main(int argc, char *argv[])
 		shutdown(0);
 	env = get_env();
 	if (!(env->obj = parse_obj(argv[1])))
-		return (4);
+		shutdown(4);
 	if (!setup_gl(env))
-		return (5);
+		shutdown(5);
 	if (!setup_shader(env))
-		return (5);
+		shutdown(5);
 	if (!setup_vertex(env))
-		return (6);
+		shutdown(6);
 	if (!setup_texture(env))
-		return (7);
+		shutdown(7);
 	env->cam = (t_fvec3){0.0f, 0.0f, -(env->obj->max.z -
 					env->obj->min.z) * 2.0f};
 	env->mvp.model = m4_translate(env->mvp.model, (t_fvec3){

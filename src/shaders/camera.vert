@@ -19,7 +19,7 @@ void main()
 {
 	gl_Position = projection * view * model * vec4(aPos, 1.0f);
 	TexCoord = vec2(aTexCoord.x * 2, aTexCoord.y * 2);
-	if (mode == COLOR)
+	if (mode == COLOR || mode == TEX)
 		smooth_col = vec4(aPos.y * 0.4f + 0.4f, aPos.z * 0.1 + aPos.y * 0.4f + 0.1f, 0.2f, 1.0f);
 	if (mode == COLORSHIFT)
 		smooth_col = vec4(aPos * 0.4f + 0.4f, 1.0f);

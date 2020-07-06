@@ -38,7 +38,6 @@ void		glprogram_log_error(int program)
 void		print_and_terminate(char *str)
 {
 	ft_putendl(str);
-	glfwTerminate();
 }
 
 int			shutdown(int err)

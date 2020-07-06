@@ -6,7 +6,7 @@
 /*   By: tlernoul <tlernoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 17:39:56 by tlernoul          #+#    #+#             */
-/*   Updated: 2020/07/02 17:12:34 by tlernoul         ###   ########.fr       */
+/*   Updated: 2020/07/06 12:44:44 by tlernoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void		set_color(t_env *env)
 	t_fvec3			rgb;
 	int				mode;
 
-	time_value = glfwGetTime();
-	color_shift = (sin(time_value) / 2.0f);
+	time_value = (float)glfwGetTime();
+	color_shift = (float)(sinf(time_value) / 2.0f);
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	rgb.x = color_shift + 0.2f;
@@ -72,7 +72,7 @@ void		set_color(t_env *env)
 	rgb.z = color_shift + 0.2f;
 	glGetUniformiv(env->shader, env->uni.colmode, &mode);
 	if (mode == 3 && env->lerp < 1.0f)
-		env->lerp += 0.004f;
+		env->lerp += 0.01f;
 	else if (mode != 3)
 		env->lerp = 0;
 	glUniform1f(env->uni.lerp, env->lerp);
